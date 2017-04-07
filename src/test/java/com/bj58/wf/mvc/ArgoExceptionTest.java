@@ -23,7 +23,7 @@ package com.bj58.wf.mvc;
 import org.junit.Assert;
 import org.junit.Test;
 
-import lemon.mvc.mvc.exception.WFException;
+import com.takin.mvc.mvc.exception.WFException;
 
 /**
  * @author lemon

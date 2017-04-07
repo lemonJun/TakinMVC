@@ -1,7 +1,7 @@
 package learn.guice;
 
-import lemon.mvc.mvc.inject.DemoModule;
-import lemon.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.DemoModule;
+import com.takin.mvc.mvc.inject.GuiceDI;
 
 public class TestGuice {
 

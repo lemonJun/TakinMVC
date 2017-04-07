@@ -2,7 +2,7 @@ package learn.dynamicinvoke;
 
 import org.junit.Test;
 
-import lemon.mvc.mvc.converter.ConverterFactory;
+import com.takin.mvc.mvc.converter.ConverterFactory;
 
 public class TestBind {
 

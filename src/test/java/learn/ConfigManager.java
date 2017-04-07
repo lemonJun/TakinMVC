@@ -2,7 +2,7 @@ package learn;
 
 import java.io.File;
 
-import lemon.mvc.mvc.WF;
+import com.takin.mvc.mvc.WF;
 
 /**
  * 管理配置文件

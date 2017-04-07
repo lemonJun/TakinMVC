@@ -28,8 +28,7 @@ import com.google.inject.ImplementedBy;
 import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.google.inject.name.Names;
-
-import lemon.mvc.mvc.inject.WFSystem;
+import com.takin.mvc.mvc.inject.WFSystem;
 
 /**
  * @author lemon

@@ -29,8 +29,8 @@ import java.io.File;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import lemon.mvc.mvc.exception.WFException;
-import lemon.mvc.util.PathUtils;
+import com.takin.mvc.mvc.exception.WFException;
+import com.takin.mvc.util.PathUtils;
 
 /**
  * @author lemon

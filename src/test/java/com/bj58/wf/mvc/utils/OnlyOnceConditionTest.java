@@ -22,8 +22,8 @@ package com.bj58.wf.mvc.utils;
 
 import org.testng.annotations.Test;
 
-import lemon.mvc.mvc.exception.WFException;
-import lemon.mvc.util.OnlyOnceCondition;
+import com.takin.mvc.mvc.exception.WFException;
+import com.takin.mvc.util.OnlyOnceCondition;
 
 /**
  * @author lemon

@@ -2,8 +2,8 @@ package com.bj58.wf.mvc.utils;
 
 import org.junit.Test;
 
-import lemon.mvc.mvc.annotation.Controller;
-import lemon.mvc.spring.AnnotationUtils;
+import com.takin.mvc.mvc.annotation.Controller;
+import com.takin.mvc.spring.AnnotationUtils;
 
 public class AnnoTest {
 
