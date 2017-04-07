@@ -24,7 +24,7 @@ public abstract class AbstractController implements MVCController {
 
     @Inject
     protected InitHelper wfGod;
-
+    
     @Inject
     protected ViewFactory view;
 
