@@ -77,12 +77,11 @@ public class Dispatcher {
         return beat;
 
     }
-    
+
     //
     private void route(BeatContext beat) {
         ActionTimeMonitor actionTimeMonitor = ActionTimeMonitor.Factory.create();
         try {
-            logger.info("mvc thread:" + Thread.currentThread().getName() + " is running");
             ActionResult result = GuiceDI.getInstance(Router.class).route(beat);
 
             if (ActionResult.NULL == result)

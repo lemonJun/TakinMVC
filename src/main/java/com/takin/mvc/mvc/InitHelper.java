@@ -17,7 +17,6 @@ import com.google.common.collect.Lists;
 import com.google.inject.Module;
 import com.takin.mvc.mvc.annotation.Controller;
 import com.takin.mvc.mvc.annotation.Init;
-import com.takin.mvc.mvc.context.WFApplicationContext;
 import com.takin.mvc.mvc.exception.WFException;
 import com.takin.mvc.mvc.inject.GuiceDI;
 import com.takin.mvc.mvc.inject.UserModule;
@@ -56,16 +55,8 @@ public class InitHelper {
             GuiceDI.createInjector(modules);
             logger.info("guice init ..");
 
-            //            try {
-            //                Module beanModule = WFApplicationContext.getModule();
-            //                GuiceDI.createChildInjector(beanModule);
-            //                logger.info("guice init bean module");
-            //            } catch (Exception e) {
-            //                logger.error("", e);
-            //            }
-
             this.controllerClasses = parseControllers("");
-
+            
             modules = Lists.newArrayList();
             modules.add(new UserModule());
             GuiceDI.createChildInjector(modules);

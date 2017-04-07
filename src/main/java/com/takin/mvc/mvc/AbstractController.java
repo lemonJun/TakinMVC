@@ -15,7 +15,6 @@ import com.takin.mvc.mvc.view.ViewFactory;
 public abstract class AbstractController implements MVCController {
 
     protected static final Logger logger = LoggerFactory.getLogger(AbstractController.class);
-
     /**
      * 在一个请求过程中的上下文
      * 
@@ -24,7 +23,7 @@ public abstract class AbstractController implements MVCController {
 
     @Inject
     protected InitHelper wfGod;
-    
+
     @Inject
     protected ViewFactory view;
 

@@ -92,10 +92,11 @@ public class VelocityViewFactory implements ViewFactory {
         private VelocityViewResult(String viewName) {
             this.viewName = viewName;
         }
-
+        
         @Override
         public void render(BeatContext beat) {
-            String path = "views" + "\\" + viewName + suffix;
+            //            String path = "views" + "\\" + viewName + suffix;
+            String path = "" + "\\" + viewName + suffix;
 
             Template template = Velocity.getTemplate(path);
             HttpServletResponse response;

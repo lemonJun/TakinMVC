@@ -1,6 +1,8 @@
 package com.takin.mvc.mvc;
 
 import java.io.File;
+import java.io.InputStream;
+import java.util.PropertyResourceBundle;
 
 import com.takin.mvc.mvc.exception.ResourceNotFoundException;
 import com.takin.mvc.util.ExceptionUtils;
@@ -9,16 +11,19 @@ import com.takin.mvc.util.FileUtil;
 public class WF {
     protected static String namespace;
     public static String CONFIG_FOLDER;//unix系统下没有测试
-    private static String LOG_CONFIG_FILE;
     public static String DATASOURCE_CONFIG_FILE;
     private static String NAMESPACE_CONFIG_FOLDER;
 
     public static void init() {
         try {
-            namespace = "disconfig";
+            namespace = "";
+            ClassLoader cl = Thread.currentThread().getContextClassLoader();
+            InputStream inputStream = cl.getResourceAsStream("META-INF/namespace.properties");
+            PropertyResourceBundle pp = new PropertyResourceBundle(inputStream);
 
+            namespace = pp.containsKey("namespace") ? pp.getString("namespace") : "";
             if (namespace == null || "".equals(namespace.trim()))
-                throw new ResourceNotFoundException("Does not specify a value for the namespace");
+                throw new Exception("Does not specify a value for the namespace");
 
             String[] namespaces = namespace.split("/");
             if (namespaces.length == 2) {
@@ -26,14 +31,11 @@ public class WF {
             }
 
             CONFIG_FOLDER = FileUtil.getRootPath() + "/opt/wf/";
-            NAMESPACE_CONFIG_FOLDER = FileUtil.getRootPath() + "/opt/wf/${namespace}";
-            LOG_CONFIG_FILE = CONFIG_FOLDER + "${namespace}/bj58log.properties";
-            DATASOURCE_CONFIG_FILE = CONFIG_FOLDER + "${namespace}/db.properties";
+            NAMESPACE_CONFIG_FOLDER = FileUtil.getRootPath() + "/opt/wf/" + namespace;
             // 往配置文件夹拷入各类配置
             //			initConfigFile();
             //            initServices();
             //            initConverter();
-
         } catch (Exception e) {
             throw ExceptionUtils.makeThrow("META-INF in the classpath folder to ensure that there is 'namespace.properties' configuration file, and specifies the value namespace or vm parameters contain WF.uspcluster", e);
         }
@@ -48,10 +50,6 @@ public class WF {
         return (pkg != null ? pkg.getImplementationVersion() : null);
     }
 
-    //    private static void initServices() {
-    //        services = new WFApplicationContext();
-    //    }
-
     /**
      * 返回项目配置文件的名称
      * <br>
@@ -60,6 +58,10 @@ public class WF {
      */
     public static String getNamespace() {
         return namespace;
+    }
+
+    public static String getNamespaceConfigFolder() {
+        return NAMESPACE_CONFIG_FOLDER;
     }
 
     /**

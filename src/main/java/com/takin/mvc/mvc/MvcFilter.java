@@ -36,12 +36,13 @@ public class MvcFilter implements Filter {
         ServletContext servletContext = filterConfig.getServletContext();
         try {
             WF.init();
-            PropertyConfigurator.configure(WF.getConfigFolder() + File.separator + WF.getNamespace() + File.separator + "log4j.properties");
+            PropertyConfigurator.configure(WF.getNamespaceConfigFolder() + File.separator + "log4j.properties");
             logger.info("MVC CONFIG_FOLDER:" + WF.getConfigFolder());
+            System.out.println("MVC CONFIG_FOLDER:" + WF.getConfigFolder());
 
             //初始化分发器    核心初始化类
             InitHelper.instance.init(servletContext);
-            
+
             //读自已的初始化
             GuiceDI.getInstance(Dispatcher.class).init();
         } catch (Exception e) {
@@ -61,7 +62,7 @@ public class MvcFilter implements Filter {
         }
         GuiceDI.getInstance(Dispatcher.class).service(httpReq, httpResp);
     }
-
+    
     @Override
     public void destroy() {
 

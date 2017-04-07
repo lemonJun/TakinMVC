@@ -5,5 +5,4 @@ package com.takin.mvc.mvc;
  *
  */
 public interface MVCController {
-    void init();
 }

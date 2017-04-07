@@ -1,5 +1,3 @@
-package com.takin.mvc.mvc.internal;
-
 //package com.bj58.wf.mvc.internal;
 //
 //import java.io.File;
@@ -33,12 +31,11 @@ package com.takin.mvc.mvc.internal;
 //    private static final String PROJECT_ID = "projectId";
 //
 //    public static final String PACKAGES_PREFIX = "groupPackagesPrefix";
-//    
+//
 //    private final File folder;
 //    private final GroupConfig groupConfig;
 //    private final ProjectConfig projectConfig;
-//    
-//    
+//
 //    public DefaultGroupConvention(GroupConventionAnnotation groupConventionAnnotation, File folder) {
 //
 //        this.folder = folder;
@@ -51,7 +48,6 @@ package com.takin.mvc.mvc.internal;
 //        projectConfig = parseProjectConfig(projectConvention, groupConventionAnnotation);
 //
 //    }
-//
 //
 //    @Override
 //    public GroupConfig group() {
@@ -68,34 +64,29 @@ package com.takin.mvc.mvc.internal;
 //     * @param groupConventionAnnotation 组织级注解
 //     * @return Group规范
 //     */
-//    private GroupConfig parseGroupConfig(GroupConventionAnnotation groupConventionAnnotation
-//            , Map<String, String> configInfoMap) {
+//    private GroupConfig parseGroupConfig(GroupConventionAnnotation groupConventionAnnotation, Map<String, String> configInfoMap) {
 //
 //        String configPath = configInfoMap.get(GROUP_CONFIG_FOLDER);
 //        String logPath = configInfoMap.get(GROUP_LOG_FOLDER);
 //
-//        Module module =  EmptyModule.class.isAssignableFrom(groupConventionAnnotation.groupModule())
-//                ? EmptyModule.instance
-//                : newInstanceByClass(groupConventionAnnotation.groupModule(), "");
+//        Module module = EmptyModule.class.isAssignableFrom(groupConventionAnnotation.groupModule()) ? EmptyModule.instance : newInstanceByClass(groupConventionAnnotation.groupModule(), "");
 //
 //        return new DefaultGroupConfig(getDir(configPath), getDir(logPath), module);
 //
 //    }
 //
-//    private ProjectConfig parseProjectConfig(ProjectConvention projectConvention,
-//                                             GroupConventionAnnotation groupConventionAnnotation) {
+//    private ProjectConfig parseProjectConfig(ProjectConvention projectConvention, GroupConventionAnnotation groupConventionAnnotation) {
 //
-////        Set<Class<? extends WFController>> controllersClasses = parseControllers(groupConventionAnnotation);
+//        //        Set<Class<? extends WFController>> controllersClasses = parseControllers(groupConventionAnnotation);
 //
 //        return new DefaultProjectConfig(projectConvention.id(), projectConvention);
 //
 //    }
 //
-//
 //    private <T> T newInstanceByClass(Class<T> clazz, String message) {
 //        try {
 //            return clazz.newInstance();
-//        }  catch (Exception e) {
+//        } catch (Exception e) {
 //            throw WFException.raise(message, e);
 //        }
 //    }
@@ -116,27 +107,27 @@ package com.takin.mvc.mvc.internal;
 //            return new ProjectConvention() {
 //                @Override
 //                public String id() {
-//                	
-//                	//名称空间
-//					String namespace = "";
-//					
-//					try {
-//						
-//						ClassLoader cl = Thread.currentThread().getContextClassLoader();
-//						InputStream inputStream = cl.getResourceAsStream("META-INF/namespace.properties");
-//						PropertyResourceBundle pp = new PropertyResourceBundle(inputStream);
-//						
-//						namespace = pp.containsKey("namespace") ? pp.getString("namespace") : "";
-//						if(namespace == null || "".equals(namespace.trim()))
-//							throw new Exception("Does not specify a value for the namespace");
-//					} catch (IOException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					} catch (Exception e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//                	
+//
+//                    //名称空间
+//                    String namespace = "";
+//
+//                    try {
+//
+//                        ClassLoader cl = Thread.currentThread().getContextClassLoader();
+//                        InputStream inputStream = cl.getResourceAsStream("META-INF/namespace.properties");
+//                        PropertyResourceBundle pp = new PropertyResourceBundle(inputStream);
+//
+//                        namespace = pp.containsKey("namespace") ? pp.getString("namespace") : "";
+//                        if (namespace == null || "".equals(namespace.trim()))
+//                            throw new Exception("Does not specify a value for the namespace");
+//                    } catch (IOException e) {
+//                        // TODO Auto-generated catch block
+//                        e.printStackTrace();
+//                    } catch (Exception e) {
+//                        // TODO Auto-generated catch block
+//                        e.printStackTrace();
+//                    }
+//
 //                    return namespace;
 //                }
 //
@@ -147,7 +138,7 @@ package com.takin.mvc.mvc.internal;
 //        }
 //
 //        ProjectConvention projectConvention = null;
-//        if(ProjectConvention.class.isAssignableFrom(clazz)){
+//        if (ProjectConvention.class.isAssignableFrom(clazz)) {
 //            //TODO:需要描述，为何抛错，这个类必须继承ProjectConvention并实现,并且构造函数必须无参。
 //            projectConvention = ProjectConvention.class.cast(newInstanceByClass(clazz, ""));
 //        }
@@ -155,20 +146,13 @@ package com.takin.mvc.mvc.internal;
 //        if (projectConvention != null)
 //            return projectConvention;
 //
-//        throw WFException
-//                .raise(String.format("Class %s not implement ProjectConvention!", className));
+//        throw WFException.raise(String.format("Class %s not implement ProjectConvention!", className));
 //
 //    }
 //
-//    private Map<String, String> parseGroupConventionPath(GroupConventionAnnotation groupConventionAnnotation
-//            , ProjectConvention projectConvention) {
+//    private Map<String, String> parseGroupConventionPath(GroupConventionAnnotation groupConventionAnnotation, ProjectConvention projectConvention) {
 //
-//        Map<String, String> paths = ImmutableMap.<String, String>builder()
-//                .put(PACKAGES_PREFIX, groupConventionAnnotation.groupPackagesPrefix())
-//                .put(PROJECT_ID, projectConvention.id())
-//                .put(GROUP_CONFIG_FOLDER, groupConventionAnnotation.groupConfigFolder())
-//                .put(GROUP_LOG_FOLDER, groupConventionAnnotation.groupLogFolder())
-//                .build();
+//        Map<String, String> paths = ImmutableMap.<String, String> builder().put(PACKAGES_PREFIX, groupConventionAnnotation.groupPackagesPrefix()).put(PROJECT_ID, projectConvention.id()).put(GROUP_CONFIG_FOLDER, groupConventionAnnotation.groupConfigFolder()).put(GROUP_LOG_FOLDER, groupConventionAnnotation.groupLogFolder()).build();
 //
 //        return matchPath(paths);
 //
@@ -186,9 +170,7 @@ package com.takin.mvc.mvc.internal;
 //        }
 //
 //        if (templates.size() > 0)
-//            throw WFException.newBuilder("GroupConventionAnnotation contains nested expression")
-//                    .addContextVariables(templates)
-//                    .build();
+//            throw WFException.newBuilder("GroupConventionAnnotation contains nested expression").addContextVariables(templates).build();
 //
 //        return result;
 //
@@ -203,7 +185,6 @@ package com.takin.mvc.mvc.internal;
 //     */
 //    static Map<String, String> migrate(Map<String, String> values, Map<String, String> templates, Map<String, String> result) {
 //        result.putAll(values);
-//
 //
 //        for (Map.Entry<String, String> templateItem : templates.entrySet()) {
 //            String v = templateItem.getValue();
@@ -226,11 +207,9 @@ package com.takin.mvc.mvc.internal;
 //        templates.clear();
 //        templates.putAll(newTemplates);
 //
-//
 //        return newValues;
 //
 //    }
-//
 //
 //    /**
 //     * 分类数据，若路径中存在"{"，刚归类到模板数据，否则归类到定值数据
@@ -251,8 +230,6 @@ package com.takin.mvc.mvc.internal;
 //    File getDir(String path) {
 //
 //        boolean isSub = path.charAt(0) == '.';
-//
-//
 //
 //        File dir = isSub ? new File(folder, path) : new File(path);
 //
@@ -275,27 +252,19 @@ package com.takin.mvc.mvc.internal;
 //
 //        Pattern controllerPattern = Pattern.compile(groupConventionAnnotation.controllerPattern());
 //
-//
 //        ImmutableSet.Builder<Class<? extends WFController>> builder = ImmutableSet.builder();
 //
 //        for (Class<?> clazz : classSet)
 //            if (applyWFController(clazz, controllerPattern))
-//                builder
-//                    .add((Class<? extends WFController>) clazz)
-//                    .build();
+//                builder.add((Class<? extends WFController>) clazz).build();
 //
 //        return builder.build();
 //    }
 //
 //    boolean applyWFController(Class<?> clazz, Pattern controllerPattern) {
 //
-//        return WFController.class.isAssignableFrom(clazz)
-//                && controllerPattern.matcher(clazz.getName()).matches()
-//                && !Modifier.isInterface(clazz.getModifiers())
-//                && !Modifier.isAbstract(clazz.getModifiers())
-//                && Modifier.isPublic(clazz.getModifiers());
+//        return WFController.class.isAssignableFrom(clazz) && controllerPattern.matcher(clazz.getName()).matches() && !Modifier.isInterface(clazz.getModifiers()) && !Modifier.isAbstract(clazz.getModifiers()) && Modifier.isPublic(clazz.getModifiers());
 //    }
-//
 //
 //    private class DefaultGroupConfig implements GroupConfig {
 //
@@ -328,16 +297,16 @@ package com.takin.mvc.mvc.internal;
 //    private class DefaultProjectConfig implements ProjectConfig {
 //
 //        private final String id;
-////        private final Set<Class<? extends WFController>> controllerClasses;
+//        //        private final Set<Class<? extends WFController>> controllerClasses;
 //        private final Module module;
-////        private final File configFolder;
-////        private final File logFolder;
-////        private final File viewFolder;
-////        private final File staticResourcesFolder;
+//        //        private final File configFolder;
+//        //        private final File logFolder;
+//        //        private final File viewFolder;
+//        //        private final File staticResourcesFolder;
 //
 //        private DefaultProjectConfig(String id, Module module) {
 //            this.id = id;
-////            this.controllerClasses = controllerClasses;
+//            //            this.controllerClasses = controllerClasses;
 //            this.module = module;
 //        }
 //
@@ -346,17 +315,15 @@ package com.takin.mvc.mvc.internal;
 //            return id;
 //        }
 //
-////        @Override
-////        public Set<Class<? extends WFController>> controllerClasses() {
-////            return controllerClasses;
-////        }
+//        //        @Override
+//        //        public Set<Class<? extends WFController>> controllerClasses() {
+//        //            return controllerClasses;
+//        //        }
 //
 //        @Override
 //        public Module module() {
 //            return module;
 //        }
 //    }
-//
-//
 //
 //}

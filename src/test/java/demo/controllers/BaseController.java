@@ -4,9 +4,4 @@ import com.takin.mvc.mvc.AbstractController;
 
 public class BaseController extends AbstractController {
 
-    @Override
-    public void init() {
-
-    }
-
 }

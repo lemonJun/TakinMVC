@@ -160,7 +160,7 @@ public class ControllerInfo {
                 return false;
             Class<?> returnType = method.getReturnType();
             return returnType != null && ActionResult.class.isAssignableFrom(returnType) && (!method.isBridge() // TODO: 是否需要处理
-            && method.getDeclaringClass() != Object.class && Modifier.isPublic(method.getModifiers()));
+                            && method.getDeclaringClass() != Object.class && Modifier.isPublic(method.getModifiers()));
         }
     };
 
