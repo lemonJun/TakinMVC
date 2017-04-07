@@ -4,13 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import lemon.mvc.mvc.ActionResult;
-import lemon.mvc.mvc.MvcController;
 import lemon.mvc.mvc.annotation.Controller;
 import lemon.mvc.mvc.annotation.Path;
 
 @Path("")
 @Controller
-public class DemonController extends MvcController {
+public class DemonController extends BaseController {
 
     private static final Logger logger = LoggerFactory.getLogger(DemonController.class);
 

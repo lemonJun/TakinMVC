@@ -1,5 +1,5 @@
 /**JsonBinder.java*/
-package lemon.mvc.mvc.json;
+package lemon.mvc.mvc.converter;
 
 import java.io.IOException;
 import java.text.DateFormat;

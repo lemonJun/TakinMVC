@@ -36,10 +36,10 @@ import org.apache.velocity.io.VelocityWriter;
 
 import lemon.mvc.mvc.ActionResult;
 import lemon.mvc.mvc.BeatContext;
+import lemon.mvc.mvc.InitHelper;
 import lemon.mvc.mvc.Trace;
 import lemon.mvc.mvc.cache.PageCache;
 import lemon.mvc.mvc.exception.WFException;
-import lemon.mvc.mvc.init.InitHelper;
 import lemon.mvc.mvc.view.ViewFactory;
 
 /**

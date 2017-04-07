@@ -19,8 +19,8 @@ import com.google.common.collect.Maps;
 
 import lemon.mvc.mvc.ActionResult;
 import lemon.mvc.mvc.BeatContext;
+import lemon.mvc.mvc.InitHelper;
 import lemon.mvc.mvc.WFController;
-import lemon.mvc.mvc.init.InitHelper;
 import lemon.mvc.mvc.inject.GuiceDI;
 import lemon.mvc.mvc.route.Action;
 import lemon.mvc.mvc.route.RouteBag;

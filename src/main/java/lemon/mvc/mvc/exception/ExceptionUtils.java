@@ -3,7 +3,7 @@ package lemon.mvc.mvc.exception;
 
 import java.lang.reflect.InvocationTargetException;
 
-import lemon.mvc.util.AssertUtil;
+import com.google.common.base.Preconditions;
 
 /**
  * @Description：ExceptionUtils，
@@ -81,7 +81,7 @@ public abstract class ExceptionUtils {
     }
 
     public static Throwable getTargetException(Exception exception) {
-        AssertUtil.notNull(exception);
+        Preconditions.checkNotNull(exception);
         if (exception instanceof InvocationTargetException) {
             Throwable target = ((InvocationTargetException) exception).getTargetException();
             if (target != null) {

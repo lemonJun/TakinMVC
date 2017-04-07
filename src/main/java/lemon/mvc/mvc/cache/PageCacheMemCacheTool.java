@@ -4,7 +4,7 @@ import java.io.File;
 
 import com.bj58.sfft.caching.Memcache;
 
-import lemon.mvc.mvc.init.WF;
+import lemon.mvc.mvc.WF;
 
 public class PageCacheMemCacheTool {
 

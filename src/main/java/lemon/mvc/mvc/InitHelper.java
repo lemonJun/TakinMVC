@@ -1,4 +1,4 @@
-package lemon.mvc.mvc.init;
+package lemon.mvc.mvc;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -16,7 +16,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.inject.Module;
 
-import lemon.mvc.mvc.WFController;
 import lemon.mvc.mvc.annotation.Controller;
 import lemon.mvc.mvc.context.WFApplicationContext;
 import lemon.mvc.mvc.exception.WFException;
@@ -82,7 +81,7 @@ public class InitHelper {
 
     //初始化所有IInit的实现类
     private void customInit() {
-        
+
     }
 
     public Executor commonExecutor() {

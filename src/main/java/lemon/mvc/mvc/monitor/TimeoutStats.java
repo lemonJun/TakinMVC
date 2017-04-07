@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import lemon.mvc.mvc.Dispatcher;
-import lemon.mvc.mvc.init.WF;
+import lemon.mvc.mvc.WF;
 import lemon.mvc.mvc.inject.GuiceDI;
 
 /**

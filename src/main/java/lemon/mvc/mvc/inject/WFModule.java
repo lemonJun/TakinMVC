@@ -12,7 +12,7 @@ import com.google.inject.name.Names;
 
 import lemon.mvc.mvc.ActionResult;
 import lemon.mvc.mvc.BeatContext;
-import lemon.mvc.mvc.init.InitHelper;
+import lemon.mvc.mvc.InitHelper;
 import lemon.mvc.mvc.internal.DefaultBeatContext;
 import lemon.mvc.mvc.internal.StaticFilesAction;
 import lemon.mvc.mvc.internal.actionresult.StatusCodeActionResult;

@@ -1,4 +1,4 @@
-package lemon.mvc.mvc.json;
+package lemon.mvc.mvc.converter;
 
 public interface Json {
 

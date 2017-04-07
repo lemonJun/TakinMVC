@@ -5,6 +5,5 @@ package lemon.mvc.mvc;
  *
  */
 public interface WFController {
-
     void init();
 }

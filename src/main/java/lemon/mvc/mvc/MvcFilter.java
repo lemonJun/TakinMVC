@@ -1,5 +1,6 @@
 package lemon.mvc.mvc;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.DispatcherType;
@@ -16,9 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.PropertyConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import lemon.mvc.mvc.init.InitHelper;
-import lemon.mvc.mvc.init.WF;
 import lemon.mvc.mvc.inject.GuiceDI;
 
 /**
@@ -28,16 +29,15 @@ import lemon.mvc.mvc.inject.GuiceDI;
 @WebFilter(urlPatterns = { "/*" }, dispatcherTypes = { DispatcherType.REQUEST }, initParams = { @WebInitParam(name = "encoding", value = "UTF-8") }, asyncSupported = true)
 public class MvcFilter implements Filter {
 
+    private static final Logger logger = LoggerFactory.getLogger(MvcFilter.class);
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         ServletContext servletContext = filterConfig.getServletContext();
         try {
-            //初始化日志文件
-            PropertyConfigurator.configure("E:/opt/wf/disconfig/log4j.properties");
-            //初始化LOG4J配置
-
-            //初始化环境配置 
             WF.init();
+            PropertyConfigurator.configure(WF.getConfigFolder() + File.separator + WF.getNamespace() + File.separator + "log4j.properties");
+            logger.info("MVC CONFIG_FOLDER:" + WF.getConfigFolder());
 
             //初始化分发器    核心初始化类
             InitHelper.instance.init(servletContext);

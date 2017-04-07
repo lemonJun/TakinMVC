@@ -1,4 +1,4 @@
-package lemon.mvc.mvc.trace;
+package lemon.mvc.mvc.monitor;
 
 public class CustomTraceInfo {
 

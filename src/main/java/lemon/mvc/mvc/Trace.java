@@ -8,10 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import lemon.mvc.mvc.inject.GuiceDI;
-import lemon.mvc.mvc.trace.CustomTraceInfo;
-import lemon.mvc.mvc.trace.RequestTraceInfo;
-import lemon.mvc.mvc.trace.ResponseTraceInfo;
-import lemon.mvc.mvc.trace.TraceInfo;
+import lemon.mvc.mvc.monitor.CustomTraceInfo;
+import lemon.mvc.mvc.monitor.RequestTraceInfo;
+import lemon.mvc.mvc.monitor.ResponseTraceInfo;
+import lemon.mvc.mvc.monitor.TraceInfo;
 
 /**
  * 请求跟踪

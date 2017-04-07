@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Binder;
 import com.google.inject.Module;
 
-import lemon.mvc.mvc.init.WF;
+import lemon.mvc.mvc.WF;
 import lemon.mvc.mvc.inject.GuiceDI;
 
 /**
@@ -32,11 +32,6 @@ public class WFApplicationContext implements ServiceContext {
     private static final Logger logger = LoggerFactory.getLogger(WFApplicationContext.class);
 
     private final static Map<String, ClazzInfo> clazzInfos = new ConcurrentHashMap<String, ClazzInfo>();
-
-    // public WFApplicationContext(){
-    //  
-    //  WF.setServiceContext(this);
-    // }
 
     public static Module getModule() throws Exception {
 

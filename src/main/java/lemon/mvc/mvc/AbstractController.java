@@ -4,7 +4,6 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import lemon.mvc.mvc.init.InitHelper;
 import lemon.mvc.mvc.inject.GuiceDI;
 import lemon.mvc.mvc.internal.actionresult.statuscode.ActionResults;
 import lemon.mvc.mvc.view.ViewFactory;
@@ -16,12 +15,7 @@ public abstract class AbstractController implements WFController {
 
     @Inject
     protected ViewFactory view;
-
-    @Override
-    public void init() {
-
-    }
-
+    
     /**
      * 返回一个view的ActionResult
      * 系统默认采用velocity实现。<br/>

@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import lemon.mvc.mvc.ActionResult;
 import lemon.mvc.mvc.BeatContext;
+import lemon.mvc.mvc.InitHelper;
 import lemon.mvc.mvc.annotation.OutputCache;
-import lemon.mvc.mvc.init.InitHelper;
 import lemon.mvc.mvc.interceptor.ActionInterceptor;
 import lemon.mvc.mvc.interceptor.PostInterceptor;
 import lemon.mvc.spring.AnnotationUtils;

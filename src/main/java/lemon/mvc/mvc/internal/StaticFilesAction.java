@@ -15,7 +15,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 import lemon.mvc.mvc.ActionResult;
-import lemon.mvc.mvc.init.InitHelper;
+import lemon.mvc.mvc.InitHelper;
 import lemon.mvc.mvc.inject.WFSystem;
 import lemon.mvc.mvc.internal.actionresult.StaticActionResult;
 import lemon.mvc.mvc.route.Action;

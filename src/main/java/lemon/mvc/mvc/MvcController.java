@@ -17,7 +17,7 @@ public abstract class MvcController extends AbstractController {
      * 日志系统
      */
 
-    protected Logger logger = LoggerFactory.getLogger(MvcController.class);
+    protected static final Logger logger = LoggerFactory.getLogger(MvcController.class);
 
     /**
      * 在一个请求过程中的上下文

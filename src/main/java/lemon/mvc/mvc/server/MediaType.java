@@ -18,7 +18,7 @@
 *  specific language governing permissions and limitations
 *  under the License.
 */
-package lemon.mvc.mvc.multipart;
+package lemon.mvc.mvc.server;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;

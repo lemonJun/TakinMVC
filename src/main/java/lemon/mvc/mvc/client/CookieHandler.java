@@ -10,7 +10,7 @@ import com.google.inject.Singleton;
 
 import lemon.mvc.mvc.BeatContext;
 import lemon.mvc.mvc.Dispatcher;
-import lemon.mvc.mvc.init.InitHelper;
+import lemon.mvc.mvc.InitHelper;
 
 /**
  * 封装cookie管理

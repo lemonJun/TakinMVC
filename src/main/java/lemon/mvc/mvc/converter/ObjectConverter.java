@@ -1,7 +1,5 @@
 package lemon.mvc.mvc.converter;
 
-import lemon.mvc.mvc.json.JacksonSupportJson;
-
 public class ObjectConverter implements Converter<Object> {
 
     @Override

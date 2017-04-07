@@ -18,7 +18,7 @@
 *  specific language governing permissions and limitations
 *  under the License.
 */
-package lemon.mvc.mvc.multipart.commons;
+package lemon.mvc.mvc.server;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,7 +39,6 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import lemon.mvc.mvc.multipart.MediaType;
 import lemon.mvc.spring.Assert;
 import lemon.mvc.spring.LinkedMultiValueMap;
 import lemon.mvc.spring.MultiValueMap;
