@@ -19,7 +19,7 @@ import com.google.common.collect.Maps;
 import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.InitHelper;
-import com.takin.mvc.mvc.WFController;
+import com.takin.mvc.mvc.MVCController;
 import com.takin.mvc.mvc.inject.GuiceDI;
 import com.takin.mvc.mvc.route.Action;
 import com.takin.mvc.mvc.route.RouteBag;
@@ -59,15 +59,15 @@ public class DefaultRouter implements Router {
         return ActionResult.NULL;
     }
 
-    List<Action> buildActions(Set<Class<? extends WFController>> controllerClasses, Action staticAction) {
-        Set<WFController> controllers = getControllerInstances(controllerClasses);
+    List<Action> buildActions(Set<Class<? extends MVCController>> controllerClasses, Action staticAction) {
+        Set<MVCController> controllers = getControllerInstances(controllerClasses);
         return buildActionss(controllers, staticAction);
     }
 
-    private Set<WFController> getControllerInstances(Set<Class<? extends WFController>> controllerClasses) {
-        Iterable<WFController> sets = Iterables.transform(controllerClasses, new Function<Class<? extends WFController>, WFController>() {
+    private Set<MVCController> getControllerInstances(Set<Class<? extends MVCController>> controllerClasses) {
+        Iterable<MVCController> sets = Iterables.transform(controllerClasses, new Function<Class<? extends MVCController>, MVCController>() {
             @Override
-            public WFController apply(Class<? extends WFController> clazz) {
+            public MVCController apply(Class<? extends MVCController> clazz) {
                 return GuiceDI.getInstance(clazz);
             }
         });
@@ -80,13 +80,13 @@ public class DefaultRouter implements Router {
      * @param staticAction
      * @return
      */
-    List<Action> buildActionss(Set<WFController> controllers, Action staticAction) {
+    List<Action> buildActionss(Set<MVCController> controllers, Action staticAction) {
 
         List<Action> actions = Lists.newArrayList();
         actions.add(staticAction);
 
         List<MethodAction> mactions = Lists.newArrayList();
-        for (WFController controller : controllers) {
+        for (MVCController controller : controllers) {
             logger.info(controller.getClass().getName());
             ControllerInfo controllerInfo = new ControllerInfo(controller);
             List<ActionInfo> subActions = controllerInfo.analyze();

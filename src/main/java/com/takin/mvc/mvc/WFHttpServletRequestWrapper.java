@@ -12,7 +12,6 @@ public class WFHttpServletRequestWrapper extends HttpServletRequestWrapper {
         super(request);
 
     }
-
     public String getOriginalParameter(String name) {
 
         return super.getParameter(name);
@@ -49,8 +48,7 @@ public class WFHttpServletRequestWrapper extends HttpServletRequestWrapper {
     }
 
     @Override
-    public String[] getParameterValues(String name) {
-
+    public String[] getParameterValues(String name) { 
         String[] ss = super.getParameterValues(name);
 
         if (ss == null)

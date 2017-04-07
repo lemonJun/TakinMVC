@@ -13,7 +13,7 @@ import com.takin.mvc.mvc.ActionAttribute;
 import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.InitHelper;
-import com.takin.mvc.mvc.WFController;
+import com.takin.mvc.mvc.MVCController;
 import com.takin.mvc.mvc.annotation.GET;
 import com.takin.mvc.mvc.annotation.Interceptor;
 import com.takin.mvc.mvc.annotation.POST;
@@ -148,7 +148,7 @@ public class ActionInfo implements ActionAttribute {
         return pathPattern;
     }
 
-    WFController controller() {
+    MVCController controller() {
         return controllerInfo.getController();
     }
 

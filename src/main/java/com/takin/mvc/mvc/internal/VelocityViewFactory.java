@@ -37,9 +37,9 @@ import org.apache.velocity.io.VelocityWriter;
 import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.InitHelper;
-import com.takin.mvc.mvc.Trace;
 import com.takin.mvc.mvc.cache.PageCache;
 import com.takin.mvc.mvc.exception.WFException;
+import com.takin.mvc.mvc.monitor.Trace;
 import com.takin.mvc.mvc.view.ViewFactory;
 
 /**

@@ -34,7 +34,7 @@ public class InitHelper {
 
     private ServletContext servletContext;
 
-    private Set<Class<? extends WFController>> controllerClasses;
+    private Set<Class<? extends MVCController>> controllerClasses;
 
     private File currentFolder;
 
@@ -91,7 +91,7 @@ public class InitHelper {
         return this.servletContext;
     }
 
-    public Set<Class<? extends WFController>> getControllerClasses() {
+    public Set<Class<? extends MVCController>> getControllerClasses() {
         return controllerClasses;
     }
 
@@ -110,17 +110,17 @@ public class InitHelper {
     }
 
     @SuppressWarnings("unchecked")
-    private Set<Class<? extends WFController>> parseControllers(String packagePrefix) {
+    private Set<Class<? extends MVCController>> parseControllers(String packagePrefix) {
         logger.info("start load all class");
         Set<Class<?>> classSet = ClassUtils.getClasses(packagePrefix);
         logger.info("end   load all class");
 
-        ImmutableSet.Builder<Class<? extends WFController>> builder = ImmutableSet.builder();
+        ImmutableSet.Builder<Class<? extends MVCController>> builder = ImmutableSet.builder();
 
         for (Class<?> clazz : classSet) {
             if (AnnotationUtils.isClassAnnotationed(clazz, Controller.class)) {
                 logger.info("add class:" + clazz.getName());
-                builder.add((Class<? extends WFController>) clazz).build();
+                builder.add((Class<? extends MVCController>) clazz).build();
             }
         }
 

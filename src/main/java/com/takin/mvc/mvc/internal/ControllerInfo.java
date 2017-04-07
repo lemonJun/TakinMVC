@@ -26,7 +26,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.InitHelper;
-import com.takin.mvc.mvc.WFController;
+import com.takin.mvc.mvc.MVCController;
 import com.takin.mvc.mvc.annotation.GET;
 import com.takin.mvc.mvc.annotation.POST;
 import com.takin.mvc.mvc.annotation.Path;
@@ -44,8 +44,8 @@ import java.util.Set;
  */
 public class ControllerInfo {
 
-    final WFController controller;
-    final Class<? extends WFController> clazz;
+    final MVCController controller;
+    final Class<? extends MVCController> clazz;
     final Path path;
     final boolean isGet;
     final boolean isPost;
@@ -53,7 +53,7 @@ public class ControllerInfo {
 
     final Set<Annotation> annotations;
 
-    public ControllerInfo(WFController controller) {
+    public ControllerInfo(MVCController controller) {
         this.controller = controller;
         clazz = controller.getClass();
         this.path = AnnotationUtils.findAnnotation(clazz, Path.class);
@@ -117,11 +117,11 @@ public class ControllerInfo {
 
     }
 
-    public WFController getController() {
+    public MVCController getController() {
         return controller;
     }
 
-    public Class<? extends WFController> getClazz() {
+    public Class<? extends MVCController> getClazz() {
         return clazz;
     }
 
