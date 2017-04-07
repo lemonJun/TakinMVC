@@ -77,17 +77,17 @@ public class Dispatcher {
         return beat;
 
     }
-
+    
     //
     private void route(BeatContext beat) {
         ActionTimeMonitor actionTimeMonitor = ActionTimeMonitor.Factory.create();
         try {
             logger.info("mvc thread:" + Thread.currentThread().getName() + " is running");
             ActionResult result = GuiceDI.getInstance(Router.class).route(beat);
-            
+
             if (ActionResult.NULL == result)
                 result = GuiceDI.getInstance(StatusCodeActionResult.class).getSc404();
-            
+
             // 判断当前请求的ActionResult是否为异步请求
             boolean isAsyncRequest = beat.getAction() != null && beat.getAction().getActionMethod().isAnnotationPresent(Async.class);
 

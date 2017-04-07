@@ -16,6 +16,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.inject.Module;
 import com.takin.mvc.mvc.annotation.Controller;
+import com.takin.mvc.mvc.annotation.Init;
 import com.takin.mvc.mvc.context.WFApplicationContext;
 import com.takin.mvc.mvc.exception.WFException;
 import com.takin.mvc.mvc.inject.GuiceDI;
@@ -26,6 +27,7 @@ import com.takin.mvc.util.ClassUtils;
 import com.takin.mvc.util.OnlyOnceCondition;
 
 public class InitHelper {
+    private static final Logger logger = LoggerFactory.getLogger(InitHelper.class);
 
     private InitHelper() {
     }
@@ -38,15 +40,13 @@ public class InitHelper {
 
     private File currentFolder;
 
-    private static final Logger logger = LoggerFactory.getLogger(InitHelper.class);
+    private final List<IInit> initers = Lists.newArrayList();;
 
     private final OnlyOnceCondition onlyOnce = OnlyOnceCondition.create("WF has been initialized.");
 
     public void init(ServletContext servletContext) {
         try {
             onlyOnce.check();
-            servletContext.log("WF initing...");
-
             this.currentFolder = innerCurrentFolder();
             this.servletContext = servletContext;
 
@@ -54,15 +54,15 @@ public class InitHelper {
             modules.add(new WFModule(this));
 
             GuiceDI.createInjector(modules);
-            logger.info("guice init wf module");
+            logger.info("guice init ..");
 
-            try {
-                Module beanModule = WFApplicationContext.getModule();
-                GuiceDI.createChildInjector(beanModule);
-                logger.info("guice init bean module");
-            } catch (Exception e) {
-                logger.error("", e);
-            }
+            //            try {
+            //                Module beanModule = WFApplicationContext.getModule();
+            //                GuiceDI.createChildInjector(beanModule);
+            //                logger.info("guice init bean module");
+            //            } catch (Exception e) {
+            //                logger.error("", e);
+            //            }
 
             this.controllerClasses = parseControllers("");
 
@@ -70,19 +70,16 @@ public class InitHelper {
             modules.add(new UserModule());
             GuiceDI.createChildInjector(modules);
             logger.info("guice init user module");
-
-            customInit();
+            for (IInit initer : initers) {
+                initer.init();
+            }
             logger.info("WF initialized");
         } catch (Exception e) {
             logger.error("", e);
         }
     }
 
-    //初始化所有IInit的实现类
-    private void customInit() {
-
-    }
-
+    //初始化所d
     public Executor commonExecutor() {
         return GuiceDI.getInstance(Executor.class);
     }
@@ -122,8 +119,10 @@ public class InitHelper {
                 logger.info("add class:" + clazz.getName());
                 builder.add((Class<? extends MVCController>) clazz).build();
             }
+            if (AnnotationUtils.isClassAnnotationed(clazz, Init.class)) {
+                initers.add((IInit) GuiceDI.getInstance(clazz));
+            }
         }
-
         return builder.build();
     }
 

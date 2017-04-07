@@ -41,7 +41,7 @@ public class MvcFilter implements Filter {
 
             //初始化分发器    核心初始化类
             InitHelper.instance.init(servletContext);
-
+            
             //读自已的初始化
             GuiceDI.getInstance(Dispatcher.class).init();
         } catch (Exception e) {

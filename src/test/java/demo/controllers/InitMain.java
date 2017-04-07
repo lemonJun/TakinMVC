@@ -8,10 +8,10 @@ import com.takin.mvc.mvc.IInit;
 public class InitMain implements IInit {
 
     private static final Logger logger = LoggerFactory.getLogger(InitMain.class);
-    
+
     @Override
     public void init() {
-        logger.info("my init ");
+        logger.info("test test init ");
     }
 
 }
