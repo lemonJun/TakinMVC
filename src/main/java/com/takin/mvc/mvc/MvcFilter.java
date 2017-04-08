@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import com.takin.mvc.mvc.inject.GuiceDI;
 
 /**
+ * 
  * 利用Filter来实行调度
  * 
  */
@@ -42,7 +43,7 @@ public class MvcFilter implements Filter {
 
             //初始化分发器    核心初始化类
             InitHelper.instance.init(servletContext);
-
+            
             //读自已的初始化
             GuiceDI.getInstance(Dispatcher.class).init();
         } catch (Exception e) {
@@ -50,7 +51,7 @@ public class MvcFilter implements Filter {
             System.exit(1);
         }
     }
-
+    
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpReq = (HttpServletRequest) request;
@@ -62,7 +63,7 @@ public class MvcFilter implements Filter {
         }
         GuiceDI.getInstance(Dispatcher.class).service(httpReq, httpResp);
     }
-    
+
     @Override
     public void destroy() {
 

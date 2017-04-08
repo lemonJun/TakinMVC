@@ -84,15 +84,16 @@ public class Dispatcher {
         try {
             ActionResult result = GuiceDI.getInstance(Router.class).route(beat);
 
-            if (ActionResult.NULL == result)
+            if (ActionResult.NULL == result) {
                 result = GuiceDI.getInstance(StatusCodeActionResult.class).getSc404();
-
+            }
+            
             // 判断当前请求的ActionResult是否为异步请求
             boolean isAsyncRequest = beat.getAction() != null && beat.getAction().getActionMethod().isAnnotationPresent(Async.class);
 
-            if (!isAsyncRequest)
+            if (!isAsyncRequest){
                 result.render(beat);
-
+            }
         } catch (Exception e) {
             GuiceDI.getInstance(StatusCodeActionResult.class).render405(beat);
             logger.error(String.format("fail to route. url:%s", beat.getClient().getRelativeUrl()), e);
