@@ -56,7 +56,7 @@ public class InitHelper {
             logger.info("guice init ..");
 
             this.controllerClasses = parseControllers("");
-            
+
             modules = Lists.newArrayList();
             modules.add(new UserModule());
             GuiceDI.createChildInjector(modules);

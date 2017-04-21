@@ -63,7 +63,7 @@ public class DefaultRouter implements Router {
         Set<MVCController> controllers = getControllerInstances(controllerClasses);
         return buildActionss(controllers, staticAction);
     }
-    
+
     private Set<MVCController> getControllerInstances(Set<Class<? extends MVCController>> controllerClasses) {
         Iterable<MVCController> sets = Iterables.transform(controllerClasses, new Function<Class<? extends MVCController>, MVCController>() {
             @Override
