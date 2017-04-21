@@ -1,6 +1,6 @@
 package com.takin.mvc.mvc;
 
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.view.RedirectResult;
 import com.takin.mvc.mvc.view.ViewFactory;
 
@@ -27,7 +27,7 @@ public abstract class ActionResult {
 
     public static ActionResult view(String viewName) {
 
-        ViewFactory view = GuiceDI.getInstance(ViewFactory.class);
+        ViewFactory view = MVCDI.getInstance(ViewFactory.class);
 
         return view.view(viewName);
     }

@@ -9,7 +9,7 @@ import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.Dispatcher;
 import com.takin.mvc.mvc.bind.BeatBindResults;
 import com.takin.mvc.mvc.client.ClientContext;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.server.ServerContext;
 
 public class BeatContextBean implements BeatContext {
@@ -17,56 +17,56 @@ public class BeatContextBean implements BeatContext {
     @Override
     public Model getModel() {
 
-        return GuiceDI.getInstance(Dispatcher.class).currentBeatContext().getModel();
+        return MVCDI.getInstance(Dispatcher.class).currentBeatContext().getModel();
     }
 
     @Override
     public HttpServletRequest getRequest() {
 
-        return GuiceDI.getInstance(Dispatcher.class).currentBeatContext().getRequest();
+        return MVCDI.getInstance(Dispatcher.class).currentBeatContext().getRequest();
     }
 
     @Override
     public HttpServletResponse getResponse() {
 
-        return GuiceDI.getInstance(Dispatcher.class).currentBeatContext().getResponse();
+        return MVCDI.getInstance(Dispatcher.class).currentBeatContext().getResponse();
     }
 
     @Override
     public ServletContext getServletContext() {
 
-        return GuiceDI.getInstance(Dispatcher.class).currentBeatContext().getServletContext();
+        return MVCDI.getInstance(Dispatcher.class).currentBeatContext().getServletContext();
     }
 
     @Override
     public ClientContext getClient() {
 
-        return GuiceDI.getInstance(Dispatcher.class).currentBeatContext().getClient();
+        return MVCDI.getInstance(Dispatcher.class).currentBeatContext().getClient();
     }
 
     @Override
     public ServerContext getServer() {
 
-        return GuiceDI.getInstance(Dispatcher.class).currentBeatContext().getServer();
+        return MVCDI.getInstance(Dispatcher.class).currentBeatContext().getServer();
     }
 
     @Override
     public ActionAttribute getAction() {
 
-        return GuiceDI.getInstance(Dispatcher.class).currentBeatContext().getAction();
+        return MVCDI.getInstance(Dispatcher.class).currentBeatContext().getAction();
 
     }
 
     @Override
     public String getRelativeUrl() {
 
-        return GuiceDI.getInstance(Dispatcher.class).currentBeatContext().getRelativeUrl();
+        return MVCDI.getInstance(Dispatcher.class).currentBeatContext().getRelativeUrl();
     }
 
     @Override
     public BeatBindResults getBindResults() {
 
-        return GuiceDI.getInstance(Dispatcher.class).currentBeatContext().getBindResults();
+        return MVCDI.getInstance(Dispatcher.class).currentBeatContext().getBindResults();
     }
 
 }

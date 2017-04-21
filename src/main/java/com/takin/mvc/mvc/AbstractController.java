@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.takin.mvc.mvc.context.BeatContextBean;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.internal.actionresult.statuscode.ActionResults;
 import com.takin.mvc.mvc.view.ViewFactory;
 
@@ -65,7 +65,7 @@ public abstract class AbstractController implements MVCController {
     }
 
     protected BeatContext beat() {
-        return GuiceDI.getInstance(Dispatcher.class).currentBeatContext();
+        return MVCDI.getInstance(Dispatcher.class).currentBeatContext();
     }
 
     protected HttpServletRequest request() {

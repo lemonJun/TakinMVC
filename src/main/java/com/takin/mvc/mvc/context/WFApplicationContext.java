@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.takin.mvc.mvc.WF;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 
 /**
  * 这个类是做什么的
@@ -74,7 +74,7 @@ public class WFApplicationContext implements ServiceContext {
 
     @Override
     public Object getBean(String name) {
-        return GuiceDI.getInstance(clazzInfos.get(name).getClazz());
+        return MVCDI.getInstance(clazzInfos.get(name).getClazz());
     }
 
     @Override

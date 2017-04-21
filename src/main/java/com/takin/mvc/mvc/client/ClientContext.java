@@ -31,7 +31,7 @@ import com.google.common.net.InetAddresses;
 import com.google.inject.ImplementedBy;
 import com.takin.mvc.mvc.Dispatcher;
 import com.takin.mvc.mvc.ReverseProxy;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 
 /**
  * 获得客户端信息
@@ -80,7 +80,7 @@ public interface ClientContext {
 
         @Inject
         public DefaultClientContext(ReverseProxy reverseProxy) {
-            this.request = GuiceDI.getInstance(Dispatcher.class).currentRequest();
+            this.request = MVCDI.getInstance(Dispatcher.class).currentRequest();
             Preconditions.checkNotNull(request);
             this.reverseProxy = reverseProxy;
 
@@ -91,7 +91,7 @@ public interface ClientContext {
             if (cookies != null)
                 return cookies;
 
-            return cookies = GuiceDI.getInstance(com.takin.mvc.mvc.client.CookieHandler.class);
+            return cookies = MVCDI.getInstance(com.takin.mvc.mvc.client.CookieHandler.class);
             //             Cookie[] cks = request.getCookies();
             //             cookies = WFGod.instance.getInstance(com.bj58.wf.mvc.client.CookieHandler.class);
             //             

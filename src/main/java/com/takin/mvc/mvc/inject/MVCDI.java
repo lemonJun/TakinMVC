@@ -5,7 +5,7 @@ import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.google.inject.Module;
 
-public class GuiceDI {
+public class MVCDI {
 
     private static Injector injector;
 

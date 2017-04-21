@@ -31,7 +31,7 @@ import com.google.inject.Key;
 import com.google.inject.OutOfScopeException;
 import com.takin.mvc.mvc.annotation.Async;
 import com.takin.mvc.mvc.client.UploadRequest;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.inject.WFSystem;
 import com.takin.mvc.mvc.internal.actionresult.StatusCodeActionResult;
 import com.takin.mvc.mvc.monitor.ActionTimeMonitor;
@@ -55,7 +55,7 @@ public class Dispatcher {
     final ThreadLocal<Context> localContext = new ThreadLocal<Context>();
 
     public void init() {
-        GuiceDI.getInstance(Router.class);
+        MVCDI.getInstance(Router.class);
     }
 
     public void service(HttpServletRequest request, HttpServletResponse response) {
@@ -70,7 +70,7 @@ public class Dispatcher {
         Context context = new Context(request, response);
         localContext.set(context);
 
-        BeatContext beat = GuiceDI.getInstance(defaultBeatContextKey);
+        BeatContext beat = MVCDI.getInstance(defaultBeatContextKey);
         context.setBeat(beat);
         // 设置系统性变量
         beat.getModel().add("__beat", beat);
@@ -82,10 +82,10 @@ public class Dispatcher {
     private void route(BeatContext beat) {
         ActionTimeMonitor actionTimeMonitor = ActionTimeMonitor.Factory.create();
         try {
-            ActionResult result = GuiceDI.getInstance(Router.class).route(beat);
+            ActionResult result = MVCDI.getInstance(Router.class).route(beat);
 
             if (ActionResult.NULL == result) {
-                result = GuiceDI.getInstance(StatusCodeActionResult.class).getSc404();
+                result = MVCDI.getInstance(StatusCodeActionResult.class).getSc404();
             }
             
             // 判断当前请求的ActionResult是否为异步请求
@@ -95,7 +95,7 @@ public class Dispatcher {
                 result.render(beat);
             }
         } catch (Exception e) {
-            GuiceDI.getInstance(StatusCodeActionResult.class).render405(beat);
+            MVCDI.getInstance(StatusCodeActionResult.class).render405(beat);
             logger.error(String.format("fail to route. url:%s", beat.getClient().getRelativeUrl()), e);
         } finally {
             //是否发送  应该设置一个注解的开关的

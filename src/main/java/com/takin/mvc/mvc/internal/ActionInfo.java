@@ -21,7 +21,7 @@ import com.takin.mvc.mvc.annotation.Path;
 import com.takin.mvc.mvc.bind.BindAndValidate;
 import com.takin.mvc.mvc.converter.ConverterFactory;
 import com.takin.mvc.mvc.exception.WFException;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.interceptor.ActionInterceptor;
 import com.takin.mvc.mvc.route.RouteBag;
 import com.takin.mvc.spring.AnnotationUtils;
@@ -357,9 +357,9 @@ public class ActionInfo implements ActionAttribute {
 
         int order = orderObject == null ? 100 : (Integer) orderObject; // xxx: maybe throw exception.
 
-        ActionInterceptor preInterceptor = (preA != null && preA.type() == Interceptor.InterceptorType.ACTION ? GuiceDI.getInstance(preA.value()) : null);
+        ActionInterceptor preInterceptor = (preA != null && preA.type() == Interceptor.InterceptorType.ACTION ? MVCDI.getInstance(preA.value()) : null);
 
-        ActionInterceptor postInterceptor = (preA != null && preA.type() == Interceptor.InterceptorType.RESULT ? GuiceDI.getInstance(preA.value()) : null);
+        ActionInterceptor postInterceptor = (preA != null && preA.type() == Interceptor.InterceptorType.RESULT ? MVCDI.getInstance(preA.value()) : null);
 
         return new InterceptorInfo(ann, order, preInterceptor, postInterceptor);
     }

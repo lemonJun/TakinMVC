@@ -20,7 +20,7 @@ import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 
 /**
  * 
@@ -45,7 +45,7 @@ public class MvcFilter implements Filter {
             InitHelper.instance.init(servletContext);
             
             //读自已的初始化
-            GuiceDI.getInstance(Dispatcher.class).init();
+            MVCDI.getInstance(Dispatcher.class).init();
         } catch (Exception e) {
             servletContext.log("failed to wf initialize, system exit!!!", e);
             System.exit(1);
@@ -61,7 +61,7 @@ public class MvcFilter implements Filter {
         if (request.getCharacterEncoding() == null) {
             request.setCharacterEncoding("UTF-8");
         }
-        GuiceDI.getInstance(Dispatcher.class).service(httpReq, httpResp);
+        MVCDI.getInstance(Dispatcher.class).service(httpReq, httpResp);
     }
 
     @Override

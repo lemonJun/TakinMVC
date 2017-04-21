@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.Dispatcher;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 
 /**
  * 请求跟踪
@@ -33,7 +33,7 @@ public class Trace {
 
     public static void trace(String content) {
 
-        BeatContext beat = GuiceDI.getInstance(Dispatcher.class).currentBeatContext();
+        BeatContext beat = MVCDI.getInstance(Dispatcher.class).currentBeatContext();
         TraceInfo traceInfo = (TraceInfo) beat.getModel().get(traceInfoDesc);
 
         if (traceInfo == null)
@@ -58,7 +58,7 @@ public class Trace {
     }
 
     public static void init() {
-        BeatContext beat = GuiceDI.getInstance(Dispatcher.class).currentBeatContext();
+        BeatContext beat = MVCDI.getInstance(Dispatcher.class).currentBeatContext();
         String trace = beat.getRequest().getParameter("trace" + sdf.format(new Date()));
 
         if (trace == null || !trace.equals("true"))
@@ -74,7 +74,7 @@ public class Trace {
     }
 
     public static void wrapper() {
-        BeatContext beat = GuiceDI.getInstance(Dispatcher.class).currentBeatContext();
+        BeatContext beat = MVCDI.getInstance(Dispatcher.class).currentBeatContext();
 
         if ((TraceInfo) beat.getModel().get(traceInfoDesc) == null)
             return;
@@ -95,7 +95,7 @@ public class Trace {
 
     private static void getCustomInfo(StringBuilder sb) {
 
-        BeatContext beat = GuiceDI.getInstance(Dispatcher.class).currentBeatContext();
+        BeatContext beat = MVCDI.getInstance(Dispatcher.class).currentBeatContext();
         sb.append(customTraceTitle);
 
         TraceInfo traceInfo = (TraceInfo) beat.getModel().get(traceInfoDesc);

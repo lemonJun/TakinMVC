@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.Dispatcher;
 import com.takin.mvc.mvc.client.CookieHandler;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 
 /**
  * 用于获取和设置与后台有关的信息
@@ -32,7 +32,7 @@ public class ServerContext {
      */
     public SessionHandler getSessions() {
         if (session == null)
-            session = GuiceDI.getInstance(SessionHandler.class);
+            session = MVCDI.getInstance(SessionHandler.class);
         return session;
     }
 

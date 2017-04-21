@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import com.takin.mvc.mvc.Dispatcher;
 import com.takin.mvc.mvc.annotation.OutputCache;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.spring.AnnotationUtils;
 
 public class PageCache {
@@ -73,14 +73,14 @@ public class PageCache {
 
         int duration = getDuration();
         long cacheControl = 0 - duration;
-        CacheHttpServletResponseWrapper responseWrapper = new CacheHttpServletResponseWrapper(GuiceDI.getInstance(Dispatcher.class).currentResponse(), false, duration * 1000L, lastModified, expires, cacheControl);
+        CacheHttpServletResponseWrapper responseWrapper = new CacheHttpServletResponseWrapper(MVCDI.getInstance(Dispatcher.class).currentResponse(), false, duration * 1000L, lastModified, expires, cacheControl);
 
         return responseWrapper;
     }
 
     private static String getCacheKey() {
 
-        HttpServletRequest request = GuiceDI.getInstance(Dispatcher.class).currentRequest();
+        HttpServletRequest request = MVCDI.getInstance(Dispatcher.class).currentRequest();
 
         StringBuffer url = new StringBuffer();
         String scheme = request.getScheme();
@@ -108,7 +108,7 @@ public class PageCache {
     private static int getDuration() {
 
         int duration = -1;
-        Method method = GuiceDI.getInstance(Dispatcher.class).currentBeatContext().getAction().getActionMethod();
+        Method method = MVCDI.getInstance(Dispatcher.class).currentBeatContext().getAction().getActionMethod();
 
         Integer intDuration = methodMap.get(method);
 

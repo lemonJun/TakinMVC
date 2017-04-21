@@ -20,7 +20,7 @@ import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.InitHelper;
 import com.takin.mvc.mvc.MVCController;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.route.Action;
 import com.takin.mvc.mvc.route.RouteBag;
 import com.takin.mvc.mvc.route.RouteResult;
@@ -68,7 +68,7 @@ public class DefaultRouter implements Router {
         Iterable<MVCController> sets = Iterables.transform(controllerClasses, new Function<Class<? extends MVCController>, MVCController>() {
             @Override
             public MVCController apply(Class<? extends MVCController> clazz) {
-                return GuiceDI.getInstance(clazz);
+                return MVCDI.getInstance(clazz);
             }
         });
 

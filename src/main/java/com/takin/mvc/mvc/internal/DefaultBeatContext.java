@@ -31,7 +31,7 @@ import com.takin.mvc.mvc.Dispatcher;
 import com.takin.mvc.mvc.WFHttpServletRequestWrapper;
 import com.takin.mvc.mvc.bind.BeatBindResults;
 import com.takin.mvc.mvc.client.ClientContext;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.inject.WFSystem;
 import com.takin.mvc.mvc.server.ServerContext;
 
@@ -59,8 +59,8 @@ public class DefaultBeatContext implements BeatContext {
 
     @Inject
     public DefaultBeatContext(Model model, ClientContext clientContext, ServletContext servletContext, BeatBindResults beatBindResults) {
-        this.request = new WFHttpServletRequestWrapper(GuiceDI.getInstance(Dispatcher.class).currentRequest());
-        this.response = GuiceDI.getInstance(Dispatcher.class).currentResponse();
+        this.request = new WFHttpServletRequestWrapper(MVCDI.getInstance(Dispatcher.class).currentRequest());
+        this.response = MVCDI.getInstance(Dispatcher.class).currentResponse();
         this.model = model;
         this.clientContext = clientContext;
         this.servletContext = servletContext;
@@ -101,12 +101,12 @@ public class DefaultBeatContext implements BeatContext {
 
     public ServerContext getServer() {
 
-        return GuiceDI.getInstance(ServerContext.class);
+        return MVCDI.getInstance(ServerContext.class);
     }
 
     @Override
     public ActionAttribute getAction() {
-        return (ActionAttribute) GuiceDI.getInstance(Dispatcher.class).currentBeatContext().getModel().get("actionMethod");
+        return (ActionAttribute) MVCDI.getInstance(Dispatcher.class).currentBeatContext().getModel().get("actionMethod");
     }
 
     @Override

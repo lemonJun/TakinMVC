@@ -6,7 +6,7 @@ import java.util.Map;
 import com.google.common.collect.Maps;
 import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.Dispatcher;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.interceptor.ActionInterceptor;
 import com.takin.mvc.mvc.monitor.Trace;
 import com.takin.mvc.mvc.route.Action;
@@ -50,7 +50,7 @@ public class MethodAction implements Action {
         if (!actionInfo.matchHttpMethod(bag))//判断是否是get or post请求
             return RouteResult.unMatch();
         //     TODO : check Me放到这个位置是否合适
-        GuiceDI.getInstance(Dispatcher.class).currentBeatContext().getModel().add("actionMethod", actionInfo);
+        MVCDI.getInstance(Dispatcher.class).currentBeatContext().getModel().add("actionMethod", actionInfo);
         Map<String, String> uriTemplateVariables = Maps.newHashMap();
 
         //判断是否与path匹配

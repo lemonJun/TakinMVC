@@ -18,7 +18,7 @@ import com.google.inject.Module;
 import com.takin.mvc.mvc.annotation.Controller;
 import com.takin.mvc.mvc.annotation.Init;
 import com.takin.mvc.mvc.exception.WFException;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.inject.UserModule;
 import com.takin.mvc.mvc.inject.WFModule;
 import com.takin.mvc.spring.AnnotationUtils;
@@ -52,14 +52,14 @@ public class InitHelper {
             List<Module> modules = Lists.newArrayList();
             modules.add(new WFModule(this));
 
-            GuiceDI.createInjector(modules);
+            MVCDI.createInjector(modules);
             logger.info("guice init ..");
 
             this.controllerClasses = parseControllers("");
 
             modules = Lists.newArrayList();
             modules.add(new UserModule());
-            GuiceDI.createChildInjector(modules);
+            MVCDI.createChildInjector(modules);
             logger.info("guice init user module");
             for (IInit initer : initers) {
                 initer.init();
@@ -72,7 +72,7 @@ public class InitHelper {
 
     //初始化所d
     public Executor commonExecutor() {
-        return GuiceDI.getInstance(Executor.class);
+        return MVCDI.getInstance(Executor.class);
     }
 
     public ServletContext servletContext() {
@@ -111,7 +111,7 @@ public class InitHelper {
                 builder.add((Class<? extends MVCController>) clazz).build();
             }
             if (AnnotationUtils.isClassAnnotationed(clazz, Init.class)) {
-                initers.add((IInit) GuiceDI.getInstance(clazz));
+                initers.add((IInit) MVCDI.getInstance(clazz));
             }
         }
         return builder.build();

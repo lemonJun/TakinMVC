@@ -3,7 +3,7 @@ package com.takin.mvc.mvc;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.util.Converter;
 
 public class WFHttpServletRequestWrapper extends HttpServletRequestWrapper {
@@ -29,7 +29,7 @@ public class WFHttpServletRequestWrapper extends HttpServletRequestWrapper {
             return Converter.convert(source);
         }
 
-        BeatContext beat = GuiceDI.getInstance(Dispatcher.class).currentBeatContext();
+        BeatContext beat = MVCDI.getInstance(Dispatcher.class).currentBeatContext();
         String source = super.getParameter(name);
 
         String[] pwv = (String[]) beat.getModel().get("__PARAMSWITHOUTVALIDATE");
@@ -53,7 +53,7 @@ public class WFHttpServletRequestWrapper extends HttpServletRequestWrapper {
 
         if (ss == null)
             return null;
-        BeatContext beat = GuiceDI.getInstance(Dispatcher.class).currentBeatContext();
+        BeatContext beat = MVCDI.getInstance(Dispatcher.class).currentBeatContext();
         String[] pwvs = (String[]) beat.getModel().get("__PARAMSWITHOUTVALIDATE");
 
         for (int i = 0; i < ss.length; i++) {

@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import com.takin.mvc.mvc.Dispatcher;
 import com.takin.mvc.mvc.WF;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 
 /**
  * 
@@ -75,7 +75,7 @@ public class TimeoutStats {
     }
 
     protected String timeoutLog(long runtime, RequestStats currentRequestStats, RequestStats lastRequestStats) {
-        return String.format("time: %sms, concurrent: %s, url: %s.", runtime, currentRequestStats.getConcurrentRequest(), GuiceDI.getInstance(Dispatcher.class).currentBeatContext().getRelativeUrl());
+        return String.format("time: %sms, concurrent: %s, url: %s.", runtime, currentRequestStats.getConcurrentRequest(), MVCDI.getInstance(Dispatcher.class).currentBeatContext().getRelativeUrl());
     }
 
     protected String statsLog(RequestStats currentRequestStats, RequestStats lastRequestStats) {

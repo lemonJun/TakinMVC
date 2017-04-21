@@ -2,7 +2,7 @@ package com.takin.mvc.mvc.bind;
 
 import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.Dispatcher;
-import com.takin.mvc.mvc.inject.GuiceDI;
+import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.spring.BeanUtils;
 
 /**
@@ -16,7 +16,7 @@ public class BindAndValidate {
 
     public static ObjectBindResult bindAndValidate(Class<?> clazz) {
 
-        BeatContext beat = GuiceDI.getInstance(Dispatcher.class).currentBeatContext();
+        BeatContext beat = MVCDI.getInstance(Dispatcher.class).currentBeatContext();
 
         ObjectBindResult obr = bind(clazz, beat);
 
