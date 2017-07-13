@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.inject.Binder;
 import com.google.inject.Module;
-import com.takin.mvc.mvc.WF;
+import com.takin.mvc.mvc.Env;
 import com.takin.mvc.mvc.inject.MVCDI;
 
 /**
@@ -34,7 +34,7 @@ public class WFApplicationContext implements ServiceContext {
 
     public static Module getModule() throws Exception {
 
-        String filePath = WF.getConfigFolder() + WF.getNamespace() + "/service-context.xml";
+        String filePath = Env.getConfigFolder() + Env.getNamespace() + "/service-context.xml";
         File f = new File(filePath);// new File(getServiceConfigFilePath());
 
         if (!f.exists())
@@ -122,7 +122,7 @@ public class WFApplicationContext implements ServiceContext {
         for (Element e : importElements) {
 
             SAXReader saxReader = new SAXReader();
-            Document document = saxReader.read(new File(WF.getConfigFolder() + WF.getNamespace() + "/" + e.attributeValue("resource")));
+            Document document = saxReader.read(new File(Env.getConfigFolder() + Env.getNamespace() + "/" + e.attributeValue("resource")));
             Element rootElement = document.getRootElement();
             parseXML(rootElement);
 

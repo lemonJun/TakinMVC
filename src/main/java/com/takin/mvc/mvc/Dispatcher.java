@@ -32,7 +32,7 @@ import com.google.inject.OutOfScopeException;
 import com.takin.mvc.mvc.annotation.Async;
 import com.takin.mvc.mvc.client.UploadRequest;
 import com.takin.mvc.mvc.inject.MVCDI;
-import com.takin.mvc.mvc.inject.WFSystem;
+import com.takin.mvc.mvc.inject.MVCSystem;
 import com.takin.mvc.mvc.internal.actionresult.StatusCodeActionResult;
 import com.takin.mvc.mvc.monitor.ActionTimeMonitor;
 import com.takin.mvc.mvc.route.Router;
@@ -48,7 +48,7 @@ import com.takin.mvc.util.OnlyOnceCondition;
 @Singleton
 public class Dispatcher {
 
-    private final Key<BeatContext> defaultBeatContextKey = Key.get(BeatContext.class, WFSystem.class);
+    private final Key<BeatContext> defaultBeatContextKey = Key.get(BeatContext.class, MVCSystem.class);
 
     private static final Logger logger = LoggerFactory.getLogger(Dispatcher.class);
 

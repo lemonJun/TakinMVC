@@ -37,7 +37,7 @@ public class WFModule extends AbstractModule {
         //        bind(ServletRequest.class).to(HttpServletRequest.class);
         //        bind(ServletResponse.class).to(HttpServletResponse.class);
 
-        bind(BeatContext.class).annotatedWith(WFSystem.class).to(DefaultBeatContext.class);
+        bind(BeatContext.class).annotatedWith(MVCSystem.class).to(DefaultBeatContext.class);
 
         bind(ActionResult.class).annotatedWith(Names.named("HTTP_STATUS=404")).toInstance(StatusCodeActionResult.defaultSc404);
 
@@ -73,7 +73,7 @@ public class WFModule extends AbstractModule {
     }
 
     @Provides
-    @WFSystem
+    @MVCSystem
     @Singleton
     private Executor provideExecutor() {
         return Executors.newCachedThreadPool();

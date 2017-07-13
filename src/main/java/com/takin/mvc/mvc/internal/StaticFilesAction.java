@@ -15,7 +15,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.InitHelper;
-import com.takin.mvc.mvc.inject.WFSystem;
+import com.takin.mvc.mvc.inject.MVCSystem;
 import com.takin.mvc.mvc.internal.actionresult.StaticActionResult;
 import com.takin.mvc.mvc.route.Action;
 import com.takin.mvc.mvc.route.RouteBag;
@@ -50,7 +50,7 @@ public class StaticFilesAction implements Action {
     private final StaticActionResult.Factory staticFactory;
 
     @Inject
-    public StaticFilesAction(InitHelper god, ServletContext servletContext, StaticActionResult.Factory staticFactory, @WFSystem
+    public StaticFilesAction(InitHelper god, ServletContext servletContext, StaticActionResult.Factory staticFactory, @MVCSystem
     final Executor executor) {
 
         this.staticFactory = staticFactory;

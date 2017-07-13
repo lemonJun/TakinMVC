@@ -4,11 +4,10 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.PropertyResourceBundle;
 
-import com.takin.mvc.mvc.exception.ResourceNotFoundException;
 import com.takin.mvc.util.ExceptionUtils;
 import com.takin.mvc.util.FileUtil;
 
-public class WF {
+public class Env {
     protected static String namespace;
     public static String CONFIG_FOLDER;//unix系统下没有测试
     public static String DATASOURCE_CONFIG_FILE;
@@ -46,7 +45,7 @@ public class WF {
      * @return WebJ version in file of META-INF/MANIFEST.MF 
      */
     public static String getVersion() {
-        Package pkg = WF.class.getPackage();
+        Package pkg = Env.class.getPackage();
         return (pkg != null ? pkg.getImplementationVersion() : null);
     }
 

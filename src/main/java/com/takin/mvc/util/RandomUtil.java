@@ -2,8 +2,6 @@ package com.takin.mvc.util;
 
 import java.util.Random;
 
-import com.takin.mvc.mvc.exception.ExceptionUtils;
-
 /**
  * 随机数封装
  *

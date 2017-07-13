@@ -16,7 +16,7 @@ public class MVCDI {
     public static void createInjector(Iterable<? extends Module> modules) {
         injector = Guice.createInjector(modules);
     }
-    
+
     public static <T> T getInstance(Class<T> type) {
         return injector.getInstance(type);
     }

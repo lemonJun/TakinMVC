@@ -20,6 +20,12 @@
  */
 package com.takin.mvc.mvc.internal;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.List;
+import java.util.Set;
+
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
@@ -30,14 +36,7 @@ import com.takin.mvc.mvc.MVCController;
 import com.takin.mvc.mvc.annotation.GET;
 import com.takin.mvc.mvc.annotation.POST;
 import com.takin.mvc.mvc.annotation.Path;
-import com.takin.mvc.mvc.internal.ActionInfo;
 import com.takin.mvc.util2.AnnotationUtils;
-
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.List;
-import java.util.Set;
 
 /**
  * @author lemon

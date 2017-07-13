@@ -36,10 +36,10 @@ public class MvcFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
         ServletContext servletContext = filterConfig.getServletContext();
         try {
-            WF.init();
-            PropertyConfigurator.configure(WF.getNamespaceConfigFolder() + File.separator + "log4j.properties");
-            logger.info("MVC CONFIG_FOLDER:" + WF.getConfigFolder());
-            System.out.println("MVC CONFIG_FOLDER:" + WF.getConfigFolder());
+            Env.init();
+            PropertyConfigurator.configure(Env.getNamespaceConfigFolder() + File.separator + "log4j.properties");
+            logger.info("MVC CONFIG_FOLDER:" + Env.getConfigFolder());
+            System.out.println("MVC CONFIG_FOLDER:" + Env.getConfigFolder());
 
             //初始化分发器    核心初始化类
             InitHelper.instance.init(servletContext);

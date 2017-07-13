@@ -3,6 +3,8 @@ package com.takin.mvc.util;
 
 import java.io.UnsupportedEncodingException;
 
+import org.apache.commons.lang.CharEncoding;
+
 import com.takin.mvc.mvc.exception.CodingException;
 
 /**

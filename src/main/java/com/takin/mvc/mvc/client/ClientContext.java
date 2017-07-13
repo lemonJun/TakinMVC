@@ -23,7 +23,6 @@ package com.takin.mvc.mvc.client;
 import java.net.InetAddress;
 
 import javax.inject.Inject;
-import javax.inject.Scope;
 import javax.servlet.http.HttpServletRequest;
 
 import com.google.common.base.Preconditions;

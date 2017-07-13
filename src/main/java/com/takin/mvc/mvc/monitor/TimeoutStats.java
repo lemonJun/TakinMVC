@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.takin.mvc.mvc.Dispatcher;
-import com.takin.mvc.mvc.WF;
+import com.takin.mvc.mvc.Env;
 import com.takin.mvc.mvc.inject.MVCDI;
 
 /**
@@ -31,7 +31,7 @@ public class TimeoutStats {
 
     private RequestStats lastRequestStats = null;
 
-    private final String appName = WF.getNamespace();
+    private final String appName = Env.getNamespace();
 
     private final int TIME_VALVE = 499;
 

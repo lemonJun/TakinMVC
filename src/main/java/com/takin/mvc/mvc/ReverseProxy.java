@@ -20,11 +20,12 @@
 */
 package com.takin.mvc.mvc;
 
-import com.google.common.net.InetAddresses;
-import com.google.inject.ImplementedBy;
+import java.net.InetAddress;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.InetAddress;
+
+import com.google.common.net.InetAddresses;
+import com.google.inject.ImplementedBy;
 
 /**
  * 

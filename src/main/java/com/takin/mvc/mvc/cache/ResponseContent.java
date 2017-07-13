@@ -1,7 +1,11 @@
 package com.takin.mvc.mvc.cache;
 
-import java.io.*;
-
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.Locale;
 import java.util.zip.GZIPInputStream;
 

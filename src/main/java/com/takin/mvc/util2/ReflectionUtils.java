@@ -20,13 +20,17 @@
 */
 package com.takin.mvc.util2;
 
-import com.google.common.base.Preconditions;
-
-import java.lang.reflect.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import com.google.common.base.Preconditions;
 
 /**
  * 反射工具类

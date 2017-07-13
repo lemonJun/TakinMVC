@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.util.Converter;
 
-public class WFHttpServletRequestWrapper extends HttpServletRequestWrapper {
+public class HttpServletRequestWrappers extends HttpServletRequestWrapper {
 
-    public WFHttpServletRequestWrapper(HttpServletRequest request) {
+    public HttpServletRequestWrappers(HttpServletRequest request) {
         super(request);
 
     }

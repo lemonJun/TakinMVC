@@ -3,7 +3,7 @@ package com.takin.mvc.mvc.bind;
 import java.util.List;
 
 /**
- * WF自实现的绑定结果
+ * 自实现的绑定结果
  * @author lemon
  *
  */

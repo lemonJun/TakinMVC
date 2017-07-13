@@ -20,10 +20,10 @@
 */
 package com.takin.mvc.util;
 
+import java.io.File;
+
 import com.google.common.base.Preconditions;
 import com.takin.mvc.mvc.exception.WFException;
-
-import java.io.File;
 
 /**
  * @author lemon

@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.inject.ImplementedBy;
 import com.google.inject.Singleton;
-import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.Dispatcher;
-import com.takin.mvc.mvc.InitHelper;
 
 /**
  * 封装cookie管理

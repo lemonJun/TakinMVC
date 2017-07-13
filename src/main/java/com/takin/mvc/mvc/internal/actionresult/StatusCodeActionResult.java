@@ -20,6 +20,8 @@
 */
 package com.takin.mvc.mvc.internal.actionresult;
 
+import java.io.IOException;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -27,8 +29,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.BeatContext;
-
-import java.io.IOException;
 
 /**
  * @author lemon

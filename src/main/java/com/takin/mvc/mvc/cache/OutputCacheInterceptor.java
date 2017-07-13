@@ -1,18 +1,10 @@
 package com.takin.mvc.mvc.cache;
 
-import java.lang.reflect.Method;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 import javax.servlet.http.HttpServletResponse;
 
 import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.BeatContext;
-import com.takin.mvc.mvc.InitHelper;
-import com.takin.mvc.mvc.annotation.OutputCache;
 import com.takin.mvc.mvc.interceptor.ActionInterceptor;
-import com.takin.mvc.mvc.interceptor.PostInterceptor;
-import com.takin.mvc.util2.AnnotationUtils;
 
 /**
  * 实现的一个方法拦截器

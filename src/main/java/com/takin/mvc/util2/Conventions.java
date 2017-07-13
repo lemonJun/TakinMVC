@@ -18,7 +18,6 @@ package com.takin.mvc.util2;
 
 import java.io.Externalizable;
 import java.io.Serializable;
-import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Collection;
 import java.util.HashSet;

@@ -20,15 +20,20 @@
 */
 package com.takin.mvc.util2;
 
-import com.google.common.base.Preconditions;
-
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
-import java.lang.reflect.*;
+import java.lang.reflect.Array;
+import java.lang.reflect.GenericArrayType;
+import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.WeakHashMap;
+
+import com.google.common.base.Preconditions;
 
 /**
  * 型别解析工具类

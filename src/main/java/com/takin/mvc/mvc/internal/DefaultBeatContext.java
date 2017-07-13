@@ -28,17 +28,17 @@ import javax.servlet.http.HttpServletResponse;
 import com.takin.mvc.mvc.ActionAttribute;
 import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.Dispatcher;
-import com.takin.mvc.mvc.WFHttpServletRequestWrapper;
+import com.takin.mvc.mvc.HttpServletRequestWrappers;
 import com.takin.mvc.mvc.bind.BeatBindResults;
 import com.takin.mvc.mvc.client.ClientContext;
 import com.takin.mvc.mvc.inject.MVCDI;
-import com.takin.mvc.mvc.inject.WFSystem;
+import com.takin.mvc.mvc.inject.MVCSystem;
 import com.takin.mvc.mvc.server.ServerContext;
 
 /**
  * 
  */
-@WFSystem
+@MVCSystem
 public class DefaultBeatContext implements BeatContext {
 
     private final HttpServletRequest request;
@@ -59,7 +59,7 @@ public class DefaultBeatContext implements BeatContext {
 
     @Inject
     public DefaultBeatContext(Model model, ClientContext clientContext, ServletContext servletContext, BeatBindResults beatBindResults) {
-        this.request = new WFHttpServletRequestWrapper(MVCDI.getInstance(Dispatcher.class).currentRequest());
+        this.request = new HttpServletRequestWrappers(MVCDI.getInstance(Dispatcher.class).currentRequest());
         this.response = MVCDI.getInstance(Dispatcher.class).currentResponse();
         this.model = model;
         this.clientContext = clientContext;

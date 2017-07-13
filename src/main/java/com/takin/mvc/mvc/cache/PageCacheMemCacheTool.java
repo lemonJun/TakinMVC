@@ -3,7 +3,7 @@ package com.takin.mvc.mvc.cache;
 import java.io.File;
 
 import com.bj58.sfft.caching.Memcache;
-import com.takin.mvc.mvc.WF;
+import com.takin.mvc.mvc.Env;
 
 public class PageCacheMemCacheTool {
 
@@ -18,7 +18,7 @@ public class PageCacheMemCacheTool {
         if (mc != null)
             return mc;
 
-        String path = WF.getConfigFolder() + WF.getNamespace() + "/pagecache_memcache.xml";
+        String path = Env.getConfigFolder() + Env.getNamespace() + "/pagecache_memcache.xml";
 
         File cacheFile = new File(path);
 

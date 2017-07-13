@@ -28,7 +28,7 @@ import com.google.inject.ImplementedBy;
 import com.google.inject.Injector;
 import com.google.inject.Key;
 import com.google.inject.name.Names;
-import com.takin.mvc.mvc.inject.WFSystem;
+import com.takin.mvc.mvc.inject.MVCSystem;
 
 /**
  * @author lemon
@@ -48,7 +48,7 @@ public class LearnKey {
         }
     }
 
-    @WFSystem
+    @MVCSystem
     public static class Action2 implements Action {
 
         private long time = System.nanoTime();
@@ -72,7 +72,7 @@ public class LearnKey {
 
         System.out.println(action2.process());
 
-        Action action3 = injector.getInstance(Key.get(Action.class, WFSystem.class));
+        Action action3 = injector.getInstance(Key.get(Action.class, MVCSystem.class));
 
         System.out.println(action3.process());
 

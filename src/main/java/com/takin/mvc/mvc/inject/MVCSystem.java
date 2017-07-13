@@ -1,11 +1,11 @@
 package com.takin.mvc.mvc.inject;
 
-import com.google.inject.BindingAnnotation;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
+import com.google.inject.BindingAnnotation;
 
 /**
  * 用于WF内部注入用
@@ -14,5 +14,5 @@ import java.lang.annotation.Target;
 @BindingAnnotation
 @Target({ ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface WFSystem {
+public @interface MVCSystem {
 }

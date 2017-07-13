@@ -1,9 +1,9 @@
 package com.takin.mvc.mvc;
 
+import java.util.Map;
+
 import com.google.inject.ImplementedBy;
 import com.takin.mvc.mvc.internal.DefaultModel;
-
-import java.util.Map;
 
 /**
  * @author lemon

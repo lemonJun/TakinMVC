@@ -2,7 +2,7 @@ package learn;
 
 import java.io.File;
 
-import com.takin.mvc.mvc.WF;
+import com.takin.mvc.mvc.Env;
 
 /**
  * 管理配置文件
@@ -21,7 +21,7 @@ public class ConfigManager {
 
         hasCopy = true;
 
-        File destFolder = new File(WF.getConfigFolder() + WF.getNamespace() + "/");
+        File destFolder = new File(Env.getConfigFolder() + Env.getNamespace() + "/");
 
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
         File root;
