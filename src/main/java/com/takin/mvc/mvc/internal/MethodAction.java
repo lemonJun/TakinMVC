@@ -8,7 +8,6 @@ import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.Dispatcher;
 import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.interceptor.ActionInterceptor;
-import com.takin.mvc.mvc.monitor.Trace;
 import com.takin.mvc.mvc.route.Action;
 import com.takin.mvc.mvc.route.RouteBag;
 import com.takin.mvc.mvc.route.RouteResult;
@@ -65,7 +64,6 @@ public class MethodAction implements Action {
                 return RouteResult.invoked(actionResult);
         }
         //
-        Trace.init();
         //把beat传进去  就可以封装成对象了
         ActionResult actionResult = actionInfo.invoke(bag.getBeat(), uriTemplateVariables);
 

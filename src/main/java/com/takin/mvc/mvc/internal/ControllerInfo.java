@@ -64,7 +64,7 @@ public class ControllerInfo {
             isGet = true;
             isPost = true;
         }
-
+        
         this.isGet = isGet;
         this.isPost = isPost;
 

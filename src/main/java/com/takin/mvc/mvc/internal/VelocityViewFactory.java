@@ -39,7 +39,6 @@ import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.InitHelper;
 import com.takin.mvc.mvc.cache.PageCache;
 import com.takin.mvc.mvc.exception.WFException;
-import com.takin.mvc.mvc.monitor.Trace;
 import com.takin.mvc.mvc.view.ViewFactory;
 
 /**
@@ -124,9 +123,9 @@ public class VelocityViewFactory implements ViewFactory {
                 vw.recycle(null);
             }
 
-            if (beat.getModel().get("needcache") != null && beat.getModel().get("__TRACEINFO") == null)
+            if (beat.getModel().get("needcache") != null && beat.getModel().get("__TRACEINFO") == null) {
                 PageCache.setCacheResult(response);
-            Trace.wrapper();
+            }
         }
     }
 

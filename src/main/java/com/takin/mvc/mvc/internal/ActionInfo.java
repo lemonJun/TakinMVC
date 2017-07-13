@@ -9,6 +9,7 @@ import java.util.Set;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
+import com.takin.emmet.collection.CollectionUtil;
 import com.takin.mvc.mvc.ActionAttribute;
 import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.BeatContext;
@@ -101,16 +102,13 @@ public class ActionInfo implements ActionAttribute {
 
     private final ConverterFactory converter = new ConverterFactory();
 
-    private final PathInfo pathInfo;
-
     public ActionInfo(ControllerInfo controllerInfo, Method method, InitHelper wfGod, PathInfo pathInfo) {
         this.controllerInfo = controllerInfo;
         this.method = method;
         this.wfGod = wfGod;
-        this.pathInfo = pathInfo;
         Path path = AnnotationUtils.findAnnotation(method, Path.class);
         this.order = path.order();
-        //        path.value()
+        /**        path.value()
         //        boolean isReg = true;
         //        for(String p : path.value()){
         //         if(p.indexOf("{")  > -1 && path.order() == 1000){
@@ -121,15 +119,17 @@ public class ActionInfo implements ActionAttribute {
         //        }
         //        this.order = isReg ? 2000 : 1000;
         //        this.order = pathInfo.getMethodOrder();
-
+        
         //        this.pathPattern = simplyPathPattern(controllerInfo, path);
+         * 
+         */
         this.pathPattern = simplyPathPattern(pathInfo.getTypePath(), pathInfo.getMethodPath());
 
         this.paramTypes = ImmutableList.copyOf(method.getParameterTypes());
         this.paramNames = ImmutableList.copyOf(ClassUtils.getMethodParamNames(controllerInfo.getClazz(), method));
 
         // 计算匹配的优先级,精确匹配还是模版匹配
-        isFuzzy = pathMatcher.isPattern(pathPattern) || paramTypes.size() > 0;
+        isFuzzy = pathMatcher.isPattern(pathPattern) || CollectionUtil.isNotEmpty(paramTypes);
 
         Pair<Boolean, Boolean> httpMethodPair = pickupHttpMethod(controllerInfo, method);
         this.isGet = httpMethodPair.getKey();
@@ -213,9 +213,9 @@ public class ActionInfo implements ActionAttribute {
     }
 
     boolean matchHttpMethod(RouteBag bag) {
-        boolean isGet = bag.isGet() && isGet();
-        boolean isPost = bag.isPost() && isPost();
-        return isGet || isPost;
+        boolean sisGet = bag.isGet() && isGet();
+        boolean sisPost = bag.isPost() && isPost();
+        return sisGet || sisPost;
     }
 
     /**
@@ -225,34 +225,30 @@ public class ActionInfo implements ActionAttribute {
      * @return
      */
     ActionResult invoke(BeatContext beat, Map<String, String> urlParams) {
-
-        List<Class<?>> paramTypes = getParamTypes();
         Object[] param = new Object[paramTypes.size()];
-        List<String> paramNames = getParamNames();
-
         for (int i = 0; i < paramNames.size(); i++) {
             String paramName = paramNames.get(i);
             Class<?> clazz = paramTypes.get(i);
-            
+
             String v = urlParams.get(paramName);
             //普通类型直接bind
-            if (v != null) {
-                if (converter.canConvert(clazz)) {
-                    param[i] = converter.convert(clazz, v);
-                    continue;
-                }
+            if (v != null && converter.canConvert(clazz)) {
+                param[i] = converter.convert(clazz, v);
+                continue;
             }
-            
+
             if (converter.canConvert(clazz))
                 continue;
             param[i] = BindAndValidate.bindAndValidate(clazz).getTarget();
-            // 绑定数据
+
+            /**绑定数据
             //   ObjectBindResult br = BindUtils.bind(clazz, beat);
             //   beat.getBindResults().add(br);
             //   param[i] = br.getTarget();
             //    
             //   // 校验
-            //   beat.getBindResults().add(BindAndValidate.Singleton().validate(param[i]));       
+            //   beat.getBindResults().add(BindAndValidate.Singleton().validate(param[i]));     
+             */
         }
 
         try {
@@ -270,33 +266,34 @@ public class ActionInfo implements ActionAttribute {
     }
 
     /**
-     *收集方法上所有Annotation，包括Controller上标志
-     * @param controllerInfo controller信息
-     * @param method 方法
-     * @return 方法上所有Annotation，包括Controller
-     */
+    *收集方法上所有Annotation，包括Controller上标志
+    * @param controllerInfo controller信息
+    * @param method 方法
+    * @return 方法上所有Annotation，包括Controller
+    */
     ImmutableSet<Annotation> collectAnnotations(ControllerInfo controllerInfo, Method method) {
         return ImmutableSet.<Annotation> builder().add(method.getAnnotations()).addAll(controllerInfo.getAnnotations()).build();
 
     }
 
     Pair<Boolean, Boolean> pickupHttpMethod(ControllerInfo controllerInfo, Method method) {
-        boolean isGet = AnnotationUtils.findAnnotation(method, GET.class) != null;
-        boolean isPost = AnnotationUtils.findAnnotation(method, POST.class) != null;
+        boolean sisGet = AnnotationUtils.findAnnotation(method, GET.class) != null;
+        boolean sisPost = AnnotationUtils.findAnnotation(method, POST.class) != null;
 
         if (!isGet && !isPost) {
-            isGet = controllerInfo.isGet();
-            isPost = controllerInfo.isPost();
+            sisGet = controllerInfo.isGet();
+            sisPost = controllerInfo.isPost();
         }
 
-        return Pair.build(isGet, isPost);
+        return Pair.build(sisGet, sisPost);
 
     }
 
     private String simplyPathPattern(String combinedPattern) {
+        String ncombinedPattern = "";
         if (combinedPattern.length() > 1 && combinedPattern.endsWith("/"))
-            combinedPattern = combinedPattern.substring(0, combinedPattern.length() - 2);
-        return combinedPattern;
+            ncombinedPattern = combinedPattern.substring(0, combinedPattern.length() - 2);
+        return ncombinedPattern;
     }
 
     private String combinePathPattern(String typePath, String methodPath) {
@@ -349,19 +346,18 @@ public class ActionInfo implements ActionAttribute {
 
     private InterceptorInfo findInterceptorInfo(Annotation ann) {
         Interceptor preA = AnnotationUtils.findAnnotation(ann.getClass(), Interceptor.class);
-        //        PostInterceptorAnnotation postA = AnnotationUtils.findAnnotation(ann.getClass(), PostInterceptorAnnotation.class);
         if (preA == null)
             return null;
 
         Object orderObject = AnnotationUtils.getValue(ann, "order");
 
-        int order = orderObject == null ? 100 : (Integer) orderObject; // xxx: maybe throw exception.
+        int sorder = orderObject == null ? 100 : (Integer) orderObject; // xxx: maybe throw exception.
 
-        ActionInterceptor preInterceptor = (preA != null && preA.type() == Interceptor.InterceptorType.ACTION ? MVCDI.getInstance(preA.value()) : null);
+        ActionInterceptor preInterceptor = (preA.type() == Interceptor.InterceptorType.ACTION ? MVCDI.getInstance(preA.value()) : null);
 
-        ActionInterceptor postInterceptor = (preA != null && preA.type() == Interceptor.InterceptorType.RESULT ? MVCDI.getInstance(preA.value()) : null);
+        ActionInterceptor postInterceptor = (preA.type() == Interceptor.InterceptorType.RESULT ? MVCDI.getInstance(preA.value()) : null);
 
-        return new InterceptorInfo(ann, order, preInterceptor, postInterceptor);
+        return new InterceptorInfo(ann, sorder, preInterceptor, postInterceptor);
     }
 
     private List<InterceptorInfo> merge(List<InterceptorInfo> interceptorInfoList, InterceptorInfo interceptorInfo) {

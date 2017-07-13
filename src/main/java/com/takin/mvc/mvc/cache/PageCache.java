@@ -49,7 +49,7 @@ public class PageCache {
         CacheHttpServletResponseWrapper responseWrapper = (CacheHttpServletResponseWrapper) response;
         int duration = getDuration();
 
-        responseWrapper.cacheKey = getCacheKey();
+        responseWrapper.setCacheKey(getCacheKey());
 
         if (!(responseWrapper.getStatus() == HttpServletResponse.SC_OK))
             return;
@@ -59,7 +59,6 @@ public class PageCache {
 
         try {
             responseWrapper.flushBuffer();
-            // TODO : 设置过期时间
             Date expired = new Date((new Date().getTime() + duration * 1000L));
 
             PageCacheMemCacheTool.getCache().set(getCacheKey(), responseWrapper.getContent(), expired);

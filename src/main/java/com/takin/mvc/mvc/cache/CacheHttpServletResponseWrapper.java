@@ -22,7 +22,7 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
 
     private static final Logger log = LoggerFactory.getLogger(CacheHttpServletResponseWrapper.class);
 
-    public String cacheKey = null;
+    private String cacheKey = null;
 
     /**
      * We cache the printWriter so we can maintain a single instance
@@ -118,6 +118,7 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
      *
      * @param value The content type
      */
+    @Override
     public void setContentType(String value) {
         if (log.isDebugEnabled()) {
             log.debug("ContentType: " + value);
@@ -133,26 +134,37 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
      * @param name The header name
      * @param value The date
      */
+    @Override
     public void setDateHeader(String name, long value) {
         if (log.isDebugEnabled()) {
             log.debug("dateheader: " + name + ": " + value);
         }
 
         // only set the last modified value, if a complete page is cached
-        if ((lastModified != HttpCache.LAST_MODIFIED_OFF) && (HttpCache.HEADER_LAST_MODIFIED.equalsIgnoreCase(name))) {
-            if (!fragment) {
-                result.setLastModified(value);
-            } // TODO should we return now by fragments to avoid putting the header to the response?
+        if ((lastModified != HttpCache.LAST_MODIFIED_OFF) && (HttpCache.HEADER_LAST_MODIFIED.equalsIgnoreCase(name)) && !fragment) {
+            result.setLastModified(value);
         }
 
         // implement RFC 2616 14.21 Expires (without max-age)
-        if ((expires != HttpCache.EXPIRES_OFF) && (HttpCache.HEADER_EXPIRES.equalsIgnoreCase(name))) {
-            if (!fragment) {
-                result.setExpires(value);
-            } // TODO should we return now by fragments to avoid putting the header to the response?
+        if ((expires != HttpCache.EXPIRES_OFF) && (HttpCache.HEADER_EXPIRES.equalsIgnoreCase(name)) && !fragment) {
+            result.setExpires(value);
         }
 
         super.setDateHeader(name, value);
+    }
+
+    /**
+     * @return the cacheKey
+     */
+    public String getCacheKey() {
+        return cacheKey;
+    }
+
+    /**
+     * @param cacheKey the cacheKey to set
+     */
+    public void setCacheKey(String cacheKey) {
+        this.cacheKey = cacheKey;
     }
 
     /**
@@ -161,23 +173,20 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
      * @param name The header name
      * @param value The date
      */
+    @Override
     public void addDateHeader(String name, long value) {
         if (log.isDebugEnabled()) {
             log.debug("dateheader: " + name + ": " + value);
         }
 
         // only set the last modified value, if a complete page is cached
-        if ((lastModified != HttpCache.LAST_MODIFIED_OFF) && (HttpCache.HEADER_LAST_MODIFIED.equalsIgnoreCase(name))) {
-            if (!fragment) {
-                result.setLastModified(value);
-            } // TODO should we return now by fragments to avoid putting the header to the response?
+        if ((lastModified != HttpCache.LAST_MODIFIED_OFF) && (HttpCache.HEADER_LAST_MODIFIED.equalsIgnoreCase(name)) && !fragment) {
+            result.setLastModified(value);
         }
 
         // implement RFC 2616 14.21 Expires (without max-age)
-        if ((expires != HttpCache.EXPIRES_OFF) && (HttpCache.HEADER_EXPIRES.equalsIgnoreCase(name))) {
-            if (!fragment) {
-                result.setExpires(value);
-            } // TODO should we return now by fragments to avoid putting the header to the response?
+        if ((expires != HttpCache.EXPIRES_OFF) && (HttpCache.HEADER_EXPIRES.equalsIgnoreCase(name)) && !fragment) {
+            result.setExpires(value);
         }
 
         super.addDateHeader(name, value);
@@ -189,6 +198,7 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
      * @param name The header name
      * @param value The header value
      */
+    @Override
     public void setHeader(String name, String value) {
         if (log.isDebugEnabled()) {
             log.debug("header: " + name + ": " + value);
@@ -211,6 +221,7 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
      * @param name The header name
      * @param value The header value
      */
+    @Override
     public void addHeader(String name, String value) {
         if (log.isDebugEnabled()) {
             log.debug("header: " + name + ": " + value);
@@ -233,6 +244,7 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
      * @param name The header name
      * @param value The int value
      */
+    @Override
     public void setIntHeader(String name, int value) {
         if (log.isDebugEnabled()) {
             log.debug("intheader: " + name + ": " + value);
@@ -246,6 +258,7 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
      * responses with a status of 200 (<code>SC_OK</code>) will
      * be cached.
      */
+    @Override
     public void setStatus(int status) {
         super.setStatus(status);
         this.status = status;
@@ -256,6 +269,7 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
      * responses with a status of 200 (<code>SC_OK</code>) will
      * be cached.
      */
+    @Override
     public void sendError(int status, String string) throws IOException {
         super.sendError(status, string);
         this.status = status;
@@ -266,6 +280,7 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
      * responses with a status of 200 (<code>SC_OK</code>) will
      * be cached.
      */
+    @Override
     public void sendError(int status) throws IOException {
         super.sendError(status);
         this.status = status;
@@ -276,6 +291,8 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
      * responses with a status of 200 (<code>SC_OK</code>) will
      * be cached.
      */
+    @Override
+    @Deprecated
     public void setStatus(int status, String string) {
         super.setStatus(status, string);
         this.status = status;
@@ -286,6 +303,7 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
      * responses with a status of 200 (<code>SC_OK</code>) will
      * be cached.
      */
+    @Override
     public void sendRedirect(String location) throws IOException {
         this.status = SC_MOVED_TEMPORARILY;
         super.sendRedirect(location);
@@ -294,6 +312,7 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
     /**
      * Retrieves the captured HttpResponse status.
      */
+    @Override
     public int getStatus() {
         return status;
     }
@@ -303,6 +322,7 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
      *
      * @param value The locale
      */
+    @Override
     public void setLocale(Locale value) {
         super.setLocale(value);
         result.setLocale(value);
@@ -313,6 +333,7 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
      *
      * @throws IOException
      */
+    @Override
     public ServletOutputStream getOutputStream() throws IOException {
         // Pass this faked servlet output stream that captures what is sent
         if (cacheOut == null) {
@@ -327,6 +348,7 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
      *
      * @throws IOException
      */
+    @Override
     public PrintWriter getWriter() throws IOException {
         if (cachedWriter == null) {
             String encoding = getCharacterEncoding();
@@ -354,55 +376,10 @@ public class CacheHttpServletResponseWrapper extends HttpServletResponseWrapper 
         }
     }
 
+    @Override
     public void flushBuffer() throws IOException {
         super.flushBuffer();
         flush();
     }
 
-    /**
-     * Returns a boolean indicating if the response has been committed. 
-     * A commited response has already had its status code and headers written.
-     * 
-     * @see javax.servlet.ServletResponseWrapper#isCommitted()
-     */
-    public boolean isCommitted() {
-        return super.isCommitted(); // || (result.getOutputStream() == null);
-    }
-
-    /**
-     * Clears any data that exists in the buffer as well as the status code and headers.
-     * If the response has been committed, this method throws an IllegalStateException.
-     * @see javax.servlet.ServletResponseWrapper#reset()
-     */
-    public void reset() {
-        //        log.info("CacheHttpServletResponseWrapper:reset()");
-        super.reset();
-        /*
-        cachedWriter = null;
-        result = new ResponseContent();
-        cacheOut = null;
-        fragment = false;
-        status = SC_OK;
-        expires = HttpCache.EXPIRES_ON;
-        lastModified = HttpCache.LAST_MODIFIED_INITIAL;
-        cacheControl = -60;
-        // time ?
-        */
-    }
-
-    /**
-     * Clears the content of the underlying buffer in the response without clearing headers or status code. 
-     * If the response has been committed, this method throws an IllegalStateException.
-     * @see javax.servlet.ServletResponseWrapper#resetBuffer()
-     */
-    public void resetBuffer() {
-        //        log.info("CacheHttpServletResponseWrapper:resetBuffer()");
-        super.resetBuffer();
-        /*
-        //cachedWriter = null;
-        result = new ResponseContent();
-        //cacheOut = null;
-        //fragment = false;
-        */
-    }
 }

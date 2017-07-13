@@ -34,7 +34,6 @@ import com.takin.mvc.mvc.client.UploadRequest;
 import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.inject.MVCSystem;
 import com.takin.mvc.mvc.internal.actionresult.StatusCodeActionResult;
-import com.takin.mvc.mvc.monitor.ActionTimeMonitor;
 import com.takin.mvc.mvc.route.Router;
 import com.takin.mvc.util.OnlyOnceCondition;
 
@@ -80,7 +79,6 @@ public class Dispatcher {
 
     //
     private void route(BeatContext beat) {
-        ActionTimeMonitor actionTimeMonitor = ActionTimeMonitor.Factory.create();
         try {
             ActionResult result = MVCDI.getInstance(Router.class).route(beat);
 
@@ -91,7 +89,7 @@ public class Dispatcher {
             // 判断当前请求的ActionResult是否为异步请求
             boolean isAsyncRequest = beat.getAction() != null && beat.getAction().getActionMethod().isAnnotationPresent(Async.class);
 
-            if (!isAsyncRequest){
+            if (!isAsyncRequest) {
                 result.render(beat);
             }
         } catch (Exception e) {

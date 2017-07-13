@@ -11,7 +11,7 @@ import com.takin.mvc.mvc.view.ViewFactory;
  */
 public abstract class ActionResult {
 
-    public final static ActionResult NULL = null;
+    public static final ActionResult NULL = null;
 
     /**
      * 用于生成显示页面

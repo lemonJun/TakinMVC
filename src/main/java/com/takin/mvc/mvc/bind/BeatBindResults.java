@@ -3,6 +3,8 @@ package com.takin.mvc.mvc.bind;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.takin.emmet.collection.CollectionUtil;
+
 /**
  * 用于管理在一个beat过程中所有绑定和校验信息
  * @author lemon
@@ -61,7 +63,7 @@ public class BeatBindResults {
      * @return
      */
     public boolean hasError() {
-        return (getErrorBindResults().size() > 0) ? true : false;
+        return (CollectionUtil.isNotEmpty(getErrorBindResults())) ? true : false;
     }
 
     /**

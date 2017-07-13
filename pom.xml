@@ -100,11 +100,17 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.takin</groupId>
+			<artifactId>emmet</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
 			<version>3.1</version>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>org.ow2.asm</groupId>
 			<artifactId>asm</artifactId>

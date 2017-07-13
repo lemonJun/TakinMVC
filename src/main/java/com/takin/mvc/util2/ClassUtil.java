@@ -35,6 +35,10 @@ import com.google.common.base.Preconditions;
   */
 public class ClassUtil {
 
+    private ClassUtil() {
+
+    }
+
     /**
      * Return all interfaces that the given class implements as array,
      * including ones implemented by superclasses.
@@ -69,18 +73,20 @@ public class ClassUtil {
      * (may be <code>null</code> when accepting all declared interfaces)
      * @return all interfaces that the given object implements as Set
      */
+    @SuppressWarnings("rawtypes")
     public static Set<Class> getAllInterfacesForClassAsSet(Class clazz, ClassLoader classLoader) {
         Preconditions.checkNotNull(clazz, "Class must not be null");
         if (clazz.isInterface() && isVisible(clazz, classLoader)) {
             return Collections.singleton(clazz);
         }
         Set<Class> interfaces = new LinkedHashSet<Class>();
-        while (clazz != null) {
-            Class<?>[] ifcs = clazz.getInterfaces();
+        Class sclazz = clazz;
+        while (sclazz != null) {
+            Class<?>[] ifcs = sclazz.getInterfaces();
             for (Class<?> ifc : ifcs) {
                 interfaces.addAll(getAllInterfacesForClassAsSet(ifc, classLoader));
             }
-            clazz = clazz.getSuperclass();
+            sclazz = clazz.getSuperclass();
         }
         return interfaces;
     }
