@@ -21,9 +21,9 @@ import com.takin.mvc.mvc.exception.WFException;
 import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.inject.UserModule;
 import com.takin.mvc.mvc.inject.WFModule;
-import com.takin.mvc.spring.AnnotationUtils;
 import com.takin.mvc.util.ClassUtils;
 import com.takin.mvc.util.OnlyOnceCondition;
+import com.takin.mvc.util2.AnnotationUtils;
 
 public class InitHelper {
     private static final Logger logger = LoggerFactory.getLogger(InitHelper.class);

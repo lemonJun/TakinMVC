@@ -33,10 +33,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TreeSet;
 
-import com.takin.mvc.spring.Assert;
-import com.takin.mvc.spring.CollectionUtils;
-import com.takin.mvc.spring.LinkedCaseInsensitiveMap;
-import com.takin.mvc.spring.StringUtils;
+import com.takin.mvc.util2.Assert;
+import com.takin.mvc.util2.CollectionUtils;
+import com.takin.mvc.util2.LinkedCaseInsensitiveMap;
+import com.takin.mvc.util2.StringUtils;
 
 /**
  * 文件上传的解析类，基于Jakarta Commons FileUpload

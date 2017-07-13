@@ -19,7 +19,7 @@
 *  under the License.
 */
 
-package com.takin.mvc.spring;
+package com.takin.mvc.util2;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;

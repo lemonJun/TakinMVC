@@ -25,8 +25,8 @@ import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.takin.mvc.spring.AntPathMatcher;
-import com.takin.mvc.spring.PathMatcher;
+import com.takin.mvc.util2.AntPathMatcher;
+import com.takin.mvc.util2.PathMatcher;
 
 /**
  * @author lemon

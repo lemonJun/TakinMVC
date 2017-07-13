@@ -31,7 +31,7 @@ import com.takin.mvc.mvc.annotation.GET;
 import com.takin.mvc.mvc.annotation.POST;
 import com.takin.mvc.mvc.annotation.Path;
 import com.takin.mvc.mvc.internal.ActionInfo;
-import com.takin.mvc.spring.AnnotationUtils;
+import com.takin.mvc.util2.AnnotationUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;

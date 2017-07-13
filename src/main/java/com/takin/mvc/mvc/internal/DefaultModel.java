@@ -3,7 +3,7 @@ package com.takin.mvc.mvc.internal;
 import java.util.Map;
 
 import com.takin.mvc.mvc.Model;
-import com.takin.mvc.spring.ModelMap;
+import com.takin.mvc.util2.ModelMap;
 
 /**
  * MVC 中的Model, 以key,value形式存放，可以由Controller传个View

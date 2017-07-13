@@ -8,7 +8,7 @@ import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.annotation.ParamWithoutValidate;
 import com.takin.mvc.mvc.interceptor.ActionInterceptor;
-import com.takin.mvc.spring.AnnotationUtils;
+import com.takin.mvc.util2.AnnotationUtils;
 
 public class ParamValidateInterceptor implements ActionInterceptor {
 

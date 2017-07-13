@@ -12,7 +12,7 @@ import com.takin.mvc.mvc.InitHelper;
 import com.takin.mvc.mvc.annotation.OutputCache;
 import com.takin.mvc.mvc.interceptor.ActionInterceptor;
 import com.takin.mvc.mvc.interceptor.PostInterceptor;
-import com.takin.mvc.spring.AnnotationUtils;
+import com.takin.mvc.util2.AnnotationUtils;
 
 /**
  * 实现的一个方法拦截器

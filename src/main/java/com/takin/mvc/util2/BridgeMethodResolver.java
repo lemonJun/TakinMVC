@@ -18,7 +18,7 @@
 *  specific language governing permissions and limitations
 *  under the License.
 */
-package com.takin.mvc.spring;
+package com.takin.mvc.util2;
 
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.Method;

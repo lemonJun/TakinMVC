@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.takin.mvc.spring;
+package com.takin.mvc.util2;
 
 import java.util.Arrays;
 import java.util.Collection;
