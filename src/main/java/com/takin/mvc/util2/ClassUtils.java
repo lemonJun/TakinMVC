@@ -32,6 +32,9 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.takin.emmet.reflect.ReflectionUtils;
+import com.takin.emmet.util.CollectionUtil;
+
 /**
  * Miscellaneous class utility methods. Mainly for internal use within the
  * framework; consider
@@ -904,7 +907,7 @@ public abstract class ClassUtils {
      * @see java.util.AbstractCollection#toString()
      */
     public static String classNamesToString(Collection<Class> classes) {
-        if (CollectionUtils.isEmpty(classes)) {
+        if (CollectionUtil.isEmpty(classes)) {
             return "[]";
         }
         StringBuilder sb = new StringBuilder("[");

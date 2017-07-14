@@ -29,6 +29,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.codehaus.jackson.map.util.ClassUtil;
+
+import com.takin.emmet.reflect.ReflectionUtils;
+
 /**
  * 泛型方法的工具类，可以用来处理bridged method。
  *
@@ -115,7 +119,7 @@ public abstract class BridgeMethodResolver {
         }
 
         // Search interfaces.
-        Class[] interfaces = ClassUtil.getAllInterfacesForClass(bridgeMethod.getDeclaringClass());
+        Class[] interfaces = ClassUtils.getAllInterfacesForClass(bridgeMethod.getDeclaringClass());
         for (Class ifc : interfaces) {
             Method method = searchForMatch(ifc, bridgeMethod);
             if (method != null && !method.isBridge()) {

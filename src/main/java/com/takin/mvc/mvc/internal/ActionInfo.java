@@ -9,7 +9,7 @@ import java.util.Set;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
-import com.takin.emmet.collection.CollectionUtil;
+import com.takin.emmet.util.CollectionUtil;
 import com.takin.mvc.mvc.ActionAttribute;
 import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.BeatContext;

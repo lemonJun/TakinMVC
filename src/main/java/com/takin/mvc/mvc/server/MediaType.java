@@ -33,10 +33,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TreeSet;
 
+import com.takin.emmet.string.StringUtils;
+import com.takin.emmet.util.CollectionUtil;
 import com.takin.mvc.util2.Assert;
-import com.takin.mvc.util2.CollectionUtils;
 import com.takin.mvc.util2.LinkedCaseInsensitiveMap;
-import com.takin.mvc.util2.StringUtils;
 
 /**
  * 文件上传的解析类，基于Jakarta Commons FileUpload
@@ -250,7 +250,7 @@ public class MediaType implements Comparable<MediaType> {
         checkToken(subtype);
         this.type = type.toLowerCase(Locale.ENGLISH);
         this.subtype = subtype.toLowerCase(Locale.ENGLISH);
-        if (!CollectionUtils.isEmpty(parameters)) {
+        if (!CollectionUtil.isEmpty(parameters)) {
             Map<String, String> m = new LinkedCaseInsensitiveMap<String>(parameters.size(), Locale.ENGLISH);
             for (Map.Entry<String, String> entry : parameters.entrySet()) {
                 String attribute = entry.getKey();

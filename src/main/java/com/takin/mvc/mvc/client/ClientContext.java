@@ -91,7 +91,7 @@ public interface ClientContext {
                 return cookies;
 
             return cookies = MVCDI.getInstance(com.takin.mvc.mvc.client.CookieHandler.class);
-            //             Cookie[] cks = request.getCookies();
+            /**             Cookie[] cks = request.getCookies();
             //             cookies = WFGod.instance.getInstance(com.bj58.wf.mvc.client.CookieHandler.class);
             //             
             //             if(cks == null ||cks.length == 0)
@@ -101,6 +101,8 @@ public interface ClientContext {
             //                 cookies.add(ck);
             //             }
             //             return cookies;
+             * 
+             */
         }
 
         @Override
@@ -125,8 +127,7 @@ public interface ClientContext {
         public InetAddress getAddress() {
             if (address != null)
                 return address;
-
-            //TODO:synchronized
+            
             address = gerRemoteAddress();
             if (!reverseProxy.isCluster(address))
                 return address;

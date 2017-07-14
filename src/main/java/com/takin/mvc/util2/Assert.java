@@ -19,6 +19,10 @@ package com.takin.mvc.util2;
 import java.util.Collection;
 import java.util.Map;
 
+import com.takin.emmet.string.StringUtils;
+import com.takin.emmet.util.CollectionUtil;
+import com.takin.emmet.util.ObjectUtils;
+
 /**
  * Assertion utility class that assists in validating arguments.
  * Useful for identifying programmer errors early and clearly at runtime.
@@ -259,7 +263,7 @@ public abstract class Assert {
      * @throws IllegalArgumentException if the collection is <code>null</code> or has no elements
      */
     public static void notEmpty(Collection collection, String message) {
-        if (CollectionUtils.isEmpty(collection)) {
+        if (CollectionUtil.isEmpty(collection)) {
             throw new IllegalArgumentException(message);
         }
     }
@@ -284,7 +288,7 @@ public abstract class Assert {
      * @throws IllegalArgumentException if the map is <code>null</code> or has no entries
      */
     public static void notEmpty(Map map, String message) {
-        if (CollectionUtils.isEmpty(map)) {
+        if (CollectionUtil.isEmpty(map)) {
             throw new IllegalArgumentException(message);
         }
     }

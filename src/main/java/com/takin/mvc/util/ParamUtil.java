@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.takin.emmet.string.StringUtil;
+
 public class ParamUtil {
 
     private static String getString(HttpServletRequest request, String s) {

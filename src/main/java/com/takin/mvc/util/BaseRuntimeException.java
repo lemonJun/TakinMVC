@@ -3,8 +3,6 @@ package com.takin.mvc.util;
 /**
  * 异常基类，所有都为非强制检查异常
  *
- * @author 张纪豪
- * @Date 2010-10-13
  * @version v1.0
  */
 public abstract class BaseRuntimeException extends RuntimeException {

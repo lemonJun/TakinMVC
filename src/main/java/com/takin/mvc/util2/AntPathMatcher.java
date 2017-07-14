@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.takin.emmet.string.StringUtils;
+
 /**
  * PathMatcher implementation for Ant-style path patterns. Examples are provided below.
  *

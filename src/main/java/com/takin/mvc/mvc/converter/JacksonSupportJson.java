@@ -10,14 +10,11 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.takin.mvc.util.StringUtil;
+import com.takin.emmet.string.StringUtil;
 
 /**
  * Json：Jackson简单封装
- *
- * @author howsun(zjh@58.com)
- * @Date 2010-10-20
- * @version v0.1
+ * 
  */
 public class JacksonSupportJson implements Json {
 
