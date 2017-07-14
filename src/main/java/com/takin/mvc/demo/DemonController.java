@@ -1,4 +1,4 @@
-package demo.controllers;
+package com.takin.mvc.demo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,30 +7,28 @@ import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.annotation.Controller;
 import com.takin.mvc.mvc.annotation.Path;
 
-@Path("")
+@Path("/")
 @Controller
 public class DemonController extends BaseController {
 
     private static final Logger logger = LoggerFactory.getLogger(DemonController.class);
 
-    @Path("/index")
+    @Path("index")
     public ActionResult index() {
         long start = System.currentTimeMillis();
-        System.out.println("system start");
         logger.info("start=" + start);
-        //        fibonacci(46);
         logger.info(System.currentTimeMillis() - start + "");
 
         return ActionResult.view("index");
     }
 
-    @Path("/main/{id:\\d+}")
+    @Path("main/{id:\\d+}")
     public ActionResult main(long id) {
         logger.info("" + id);
         return ActionResult.view("main");
     }
 
-    @Path("/bean")
+    @Path("bean")
     public ActionResult bean(DemonBean bean) {
         logger.info("" + bean.getId());
         return ActionResult.view("main");

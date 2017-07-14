@@ -108,21 +108,7 @@ public class ActionInfo implements ActionAttribute {
         this.wfGod = wfGod;
         Path path = AnnotationUtils.findAnnotation(method, Path.class);
         this.order = path.order();
-        /**        path.value()
-        //        boolean isReg = true;
-        //        for(String p : path.value()){
-        //         if(p.indexOf("{")  > -1 && path.order() == 1000){
-        //          
-        //         }else{
-        //          isReg = false;
-        //         }
-        //        }
-        //        this.order = isReg ? 2000 : 1000;
-        //        this.order = pathInfo.getMethodOrder();
         
-        //        this.pathPattern = simplyPathPattern(controllerInfo, path);
-         * 
-         */
         this.pathPattern = simplyPathPattern(pathInfo.getTypePath(), pathInfo.getMethodPath());
 
         this.paramTypes = ImmutableList.copyOf(method.getParameterTypes());
@@ -260,7 +246,6 @@ public class ActionInfo implements ActionAttribute {
     }
 
     String simplyPathPattern(String typePath, String methodPath) {
-
         String originPathPattern = combinePathPattern(typePath, methodPath);
         return simplyPathPattern(originPathPattern);
     }

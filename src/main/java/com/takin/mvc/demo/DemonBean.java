@@ -1,4 +1,4 @@
-package demo.controllers;
+package com.takin.mvc.demo;
 
 public class DemonBean {
 

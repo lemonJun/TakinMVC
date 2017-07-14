@@ -102,8 +102,8 @@ public class DefaultRouter implements Router {
             String path = newAction.path();
             logger.info(String.format(".....%s", path));
             if (path.indexOf('.') == -1 && !path.endsWith("/")) {
-                logger.info(String.format(".....%s.*", newAction.path()));
-                logger.info(String.format(".....%s/", newAction.path()));
+                logger.info(String.format(".....%s.*", path));
+                logger.info(String.format(".....%s/", path));
             }
 
             logger.info("");

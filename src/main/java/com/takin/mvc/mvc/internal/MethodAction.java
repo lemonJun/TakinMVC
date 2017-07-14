@@ -24,7 +24,7 @@ public class MethodAction implements Action {
     private final ActionInfo actionInfo;
 
     private final int order;
-
+    
     private final int base = 1000;
 
     public static final DecimalFormat doubleFormat = new DecimalFormat("#.00");
@@ -48,7 +48,6 @@ public class MethodAction implements Action {
     public RouteResult matchAndInvoke(RouteBag bag) {
         if (!actionInfo.matchHttpMethod(bag))//判断是否是get or post请求
             return RouteResult.unMatch();
-        //     TODO : check Me放到这个位置是否合适
         MVCDI.getInstance(Dispatcher.class).currentBeatContext().getModel().add("actionMethod", actionInfo);
         Map<String, String> uriTemplateVariables = Maps.newHashMap();
 
