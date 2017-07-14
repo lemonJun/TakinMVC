@@ -57,23 +57,22 @@ public class ControllerInfo {
         clazz = controller.getClass();
         this.path = AnnotationUtils.findAnnotation(clazz, Path.class);
 
-        boolean isGet = AnnotationUtils.findAnnotation(clazz, GET.class) != null;
-        boolean isPost = AnnotationUtils.findAnnotation(clazz, POST.class) != null;
+        boolean iisGet = AnnotationUtils.findAnnotation(clazz, GET.class) != null;
+        boolean iisPost = AnnotationUtils.findAnnotation(clazz, POST.class) != null;
 
-        if (!isGet && !isPost) {
-            isGet = true;
-            isPost = true;
+        if (!iisGet && !iisPost) {
+            iisGet = true;
+            iisPost = true;
         }
-        
-        this.isGet = isGet;
-        this.isPost = isPost;
+
+        this.isGet = iisGet;
+        this.isPost = iisPost;
 
         this.annotations = ImmutableSet.copyOf(clazz.getAnnotations());
 
         String[] pathUrls = path == null ? new String[] { "/" } : path.value();
 
         for (String pathUrl : pathUrls) {
-
             if (pathUrl.length() == 0 || pathUrl.charAt(0) != '/')
                 pathUrl = '/' + pathUrl;
         }
@@ -148,7 +147,7 @@ public class ControllerInfo {
         return methodFilter;
     }
 
-    private final static Predicate<Method> methodFilter = new Predicate<Method>() {
+    private static final Predicate<Method> methodFilter = new Predicate<Method>() {
         @Override
         public boolean apply(Method method) {
             // if (AnnotationUtils.findAnnotation(method, Ignored.class) !=

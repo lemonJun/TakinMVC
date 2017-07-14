@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
@@ -35,6 +38,8 @@ import com.takin.mvc.util2.PathMatcher;
  * @author lemon
  */
 public class ActionInfo implements ActionAttribute {
+
+    private static final Logger logger = LoggerFactory.getLogger(ActionInfo.class);
 
     private final ControllerInfo controllerInfo;
     private final Method method;
@@ -108,7 +113,7 @@ public class ActionInfo implements ActionAttribute {
         this.wfGod = wfGod;
         Path path = AnnotationUtils.findAnnotation(method, Path.class);
         this.order = path.order();
-        
+
         this.pathPattern = simplyPathPattern(pathInfo.getTypePath(), pathInfo.getMethodPath());
 
         this.paramTypes = ImmutableList.copyOf(method.getParameterTypes());
@@ -282,7 +287,7 @@ public class ActionInfo implements ActionAttribute {
     }
 
     private String combinePathPattern(String typePath, String methodPath) {
-
+        logger.info("%s-%s", typePath, methodPath);
         return getPathMatcher().combine(typePath, methodPath);
     }
 
