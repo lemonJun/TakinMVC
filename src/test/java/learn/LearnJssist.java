@@ -31,7 +31,7 @@ public class LearnJssist {
             CtClass cc = pool.get(clazz.getName());
 
             //DEBUG, 函数名相同的方法重载的信息读不到 2011-03-21
-            CtMethod cm = cc.getDeclaredMethod(method.getName());
+            CtMethod cm = cc.getDeclaredMethod(methodName);
 
             //2011-03-21
             //			String[] paramTypeNames = new String[method.getParameterTypes().length]; 

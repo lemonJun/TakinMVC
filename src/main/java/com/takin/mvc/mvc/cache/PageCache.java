@@ -18,6 +18,9 @@ import com.takin.mvc.mvc.annotation.OutputCache;
 import com.takin.mvc.mvc.inject.MVCDI;
 
 public class PageCache {
+    private PageCache() {
+        
+    }
 
     private static final Logger log = LoggerFactory.getLogger(PageCache.class);
 

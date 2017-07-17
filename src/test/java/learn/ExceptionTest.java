@@ -35,7 +35,6 @@ public class ExceptionTest {
 
         //        System.out.println("e2==================================");
 
-        Exception e2 = new Exception("e2", e1);
         //        e2.printStackTrace();
 
         //        System.out.println("e3==================================");

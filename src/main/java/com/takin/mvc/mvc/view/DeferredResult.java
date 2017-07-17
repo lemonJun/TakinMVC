@@ -16,12 +16,8 @@ import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.internal.DefaultBeatContext;
 
 /**
- * <p>TODO 
- * <p>TODO
- * @author 58zhanglx
  * @date   2014-1-10 上午3:38:26
  * @see 
- * @modified TODO
  */
 public class DeferredResult<T> extends ActionResult implements Serializable {
 
@@ -33,7 +29,7 @@ public class DeferredResult<T> extends ActionResult implements Serializable {
     private boolean timeout = false;
     private boolean finish = false;
     private AsyncHandler<T> asyncHandler;
-    private BeatContext asyncBeat;
+    private transient BeatContext asyncBeat;
 
     public AsyncContext getContext() {
         return context;

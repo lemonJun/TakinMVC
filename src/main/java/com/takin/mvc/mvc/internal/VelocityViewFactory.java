@@ -33,6 +33,8 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.apache.velocity.context.Context;
 import org.apache.velocity.io.VelocityWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.BeatContext;
@@ -42,15 +44,15 @@ import com.takin.mvc.mvc.exception.WFException;
 import com.takin.mvc.mvc.view.ViewFactory;
 
 /**
- * @author lemon
+ * @author lemon 
  */
 @Singleton
 public class VelocityViewFactory implements ViewFactory {
+    private static final Logger logger = LoggerFactory.getLogger(VelocityViewFactory.class);
 
     @Inject
     public VelocityViewFactory(ServletContext sc) {
 
-        //    	String viewFolder = viewFolderPath();
         String webAppPath = sc.getRealPath("/");
 
         Velocity.setProperty("resource.loader", "file");
@@ -94,14 +96,13 @@ public class VelocityViewFactory implements ViewFactory {
 
         @Override
         public void render(BeatContext beat) {
-            String path = "views" + "\\" + viewName + suffix;
-            //            String path = "" + "\\" + viewName + suffix;
+            String path = String.format("views\\%s%s", viewName, suffix);
 
             Template template = Velocity.getTemplate(path);
             HttpServletResponse response;
             if (beat.getModel().get("needcache") != null && beat.getModel().get("__TRACEINFO") == null)
-
-                //TODO : check me 这样处理缓存是否合理。            
+                
+                // check me 这样处理缓存是否合理。            
                 response = PageCache.cacheResponseWrapper();
             else
                 response = beat.getResponse();
@@ -117,10 +118,11 @@ public class VelocityViewFactory implements ViewFactory {
                 template.merge(context, vw);
                 vw.flush();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                logger.error("", e);
             } finally {
-                vw.recycle(null);
+                if (vw != null) {
+                    vw.recycle(null);
+                }
             }
 
             if (beat.getModel().get("needcache") != null && beat.getModel().get("__TRACEINFO") == null) {

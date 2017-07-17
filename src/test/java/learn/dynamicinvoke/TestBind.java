@@ -11,13 +11,9 @@ public class TestBind {
     @Test
     public void testBind() throws Exception {
 
-        String id = "80";
-
         Boolean boolean1 = new Boolean(false);
 
         boolean1.booleanValue();
-
-        BindDemo demo = new BindDemo();
 
         //		m.invoke(demo, 100);
         //
