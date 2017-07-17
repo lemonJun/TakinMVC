@@ -38,20 +38,19 @@ public class MvcFilter implements Filter {
         try {
             Env.init();
             PropertyConfigurator.configure(Env.getNamespaceConfigFolder() + File.separator + "log4j.properties");
-            logger.info("MVC CONFIG_FOLDER:" + Env.getConfigFolder());
-            System.out.println("MVC CONFIG_FOLDER:" + Env.getConfigFolder());
-
+            
             //初始化分发器    核心初始化类
             InitHelper.instance.init(servletContext);
             
             //读自已的初始化
             MVCDI.getInstance(Dispatcher.class).init();
+            logger.info("mvcfilter init succ.");
         } catch (Exception e) {
             servletContext.log("failed to wf initialize, system exit!!!", e);
             System.exit(1);
         }
     }
-    
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpReq = (HttpServletRequest) request;

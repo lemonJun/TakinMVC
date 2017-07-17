@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.takin.emmet.annotation.AnnotationUtils;
 import com.takin.mvc.mvc.Dispatcher;
 import com.takin.mvc.mvc.annotation.OutputCache;
 import com.takin.mvc.mvc.inject.MVCDI;
-import com.takin.mvc.util2.AnnotationUtils;
 
 public class PageCache {
 

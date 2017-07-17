@@ -8,9 +8,6 @@ import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.Dispatcher;
 import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.interceptor.ActionInterceptor;
-import com.takin.mvc.mvc.route.Action;
-import com.takin.mvc.mvc.route.RouteBag;
-import com.takin.mvc.mvc.route.RouteResult;
 
 /**
  * @author lemon

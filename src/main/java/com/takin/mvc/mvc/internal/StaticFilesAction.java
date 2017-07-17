@@ -17,9 +17,6 @@ import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.InitHelper;
 import com.takin.mvc.mvc.inject.MVCSystem;
 import com.takin.mvc.mvc.internal.actionresult.StaticActionResult;
-import com.takin.mvc.mvc.route.Action;
-import com.takin.mvc.mvc.route.RouteBag;
-import com.takin.mvc.mvc.route.RouteResult;
 import com.takin.mvc.util.Pair;
 import com.takin.mvc.util.TouchTimer;
 

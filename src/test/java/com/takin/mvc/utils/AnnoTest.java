@@ -2,8 +2,8 @@ package com.takin.mvc.utils;
 
 import org.junit.Test;
 
+import com.takin.emmet.annotation.AnnotationUtils;
 import com.takin.mvc.mvc.annotation.Controller;
-import com.takin.mvc.util2.AnnotationUtils;
 
 public class AnnoTest {
 

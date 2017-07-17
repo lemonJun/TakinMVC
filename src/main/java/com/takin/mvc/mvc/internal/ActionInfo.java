@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
+import com.takin.emmet.annotation.AnnotationUtils;
 import com.takin.emmet.util.CollectionUtil;
 import com.takin.mvc.mvc.ActionAttribute;
 import com.takin.mvc.mvc.ActionResult;
@@ -27,10 +28,8 @@ import com.takin.mvc.mvc.converter.ConverterFactory;
 import com.takin.mvc.mvc.exception.WFException;
 import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.interceptor.ActionInterceptor;
-import com.takin.mvc.mvc.route.RouteBag;
 import com.takin.mvc.util.ClassUtils;
 import com.takin.mvc.util.Pair;
-import com.takin.mvc.util2.AnnotationUtils;
 import com.takin.mvc.util2.AntPathMatcher;
 import com.takin.mvc.util2.PathMatcher;
 
@@ -48,7 +47,7 @@ public class ActionInfo implements ActionAttribute {
         return method;
     }
 
-    private final InitHelper wfGod;
+    private final InitHelper initHelper;
 
     /**
      * path匹配模式，联合了Controller上path，并去除后置"/",
@@ -110,7 +109,7 @@ public class ActionInfo implements ActionAttribute {
     public ActionInfo(ControllerInfo controllerInfo, Method method, InitHelper wfGod, PathInfo pathInfo) {
         this.controllerInfo = controllerInfo;
         this.method = method;
-        this.wfGod = wfGod;
+        this.initHelper = wfGod;
         Path path = AnnotationUtils.findAnnotation(method, Path.class);
         this.order = path.order();
 
@@ -192,7 +191,7 @@ public class ActionInfo implements ActionAttribute {
     }
 
     InitHelper getWfGod() {
-        return wfGod;
+        return initHelper;
     }
 
     ConverterFactory getConverter() {
@@ -252,6 +251,7 @@ public class ActionInfo implements ActionAttribute {
 
     String simplyPathPattern(String typePath, String methodPath) {
         String originPathPattern = combinePathPattern(typePath, methodPath);
+        logger.info(String.format("originPath:%s", originPathPattern));
         return simplyPathPattern(originPathPattern);
     }
 
@@ -280,14 +280,15 @@ public class ActionInfo implements ActionAttribute {
     }
 
     private String simplyPathPattern(String combinedPattern) {
-        String ncombinedPattern = "";
-        if (combinedPattern.length() > 1 && combinedPattern.endsWith("/"))
+        String ncombinedPattern = combinedPattern;
+        if (combinedPattern.length() > 1 && combinedPattern.endsWith("/")) {
             ncombinedPattern = combinedPattern.substring(0, combinedPattern.length() - 2);
+        }
         return ncombinedPattern;
     }
 
     private String combinePathPattern(String typePath, String methodPath) {
-        logger.info("%s-%s", typePath, methodPath);
+        logger.info(String.format("%s-%s", typePath, methodPath));
         return getPathMatcher().combine(typePath, methodPath);
     }
 

@@ -33,8 +33,8 @@ import com.takin.mvc.mvc.annotation.Async;
 import com.takin.mvc.mvc.client.UploadRequest;
 import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.inject.MVCSystem;
+import com.takin.mvc.mvc.internal.Router;
 import com.takin.mvc.mvc.internal.actionresult.StatusCodeActionResult;
-import com.takin.mvc.mvc.route.Router;
 import com.takin.mvc.util.OnlyOnceCondition;
 
 /**

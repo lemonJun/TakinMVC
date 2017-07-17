@@ -6,7 +6,6 @@ import com.takin.mvc.mvc.BeatContext;
 /**
  * @author lemon
  */
-//TODO:拦截器
 public interface ActionInterceptor {
 
     /**

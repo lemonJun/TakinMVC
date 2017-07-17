@@ -1,4 +1,4 @@
-package com.takin.mvc.mvc.route;
+package com.takin.mvc.mvc.internal;
 
 /**
  * @author lemon

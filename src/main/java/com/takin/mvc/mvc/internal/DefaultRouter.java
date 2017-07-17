@@ -10,6 +10,7 @@ import javax.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.base.Function;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
@@ -21,11 +22,6 @@ import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.InitHelper;
 import com.takin.mvc.mvc.MVCController;
 import com.takin.mvc.mvc.inject.MVCDI;
-import com.takin.mvc.mvc.route.Action;
-import com.takin.mvc.mvc.route.RouteBag;
-import com.takin.mvc.mvc.route.RouteResult;
-import com.takin.mvc.mvc.route.Router;
-import com.takin.mvc.mvc.route.StaticActionAnnotation;
 
 @Singleton
 public class DefaultRouter implements Router {
@@ -89,6 +85,7 @@ public class DefaultRouter implements Router {
         for (MVCController controller : controllers) {
             logger.info(controller.getClass().getName());
             ControllerInfo controllerInfo = new ControllerInfo(controller);
+            logger.info(JSON.toJSONString(controllerInfo));
             List<ActionInfo> subActions = controllerInfo.analyze();
 
             for (ActionInfo newAction : subActions) {

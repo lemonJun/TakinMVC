@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.inject.Module;
+import com.takin.emmet.annotation.AnnotationUtils;
 import com.takin.mvc.mvc.annotation.Controller;
 import com.takin.mvc.mvc.annotation.Init;
 import com.takin.mvc.mvc.exception.WFException;
@@ -23,7 +24,6 @@ import com.takin.mvc.mvc.inject.UserModule;
 import com.takin.mvc.mvc.inject.WFModule;
 import com.takin.mvc.util.ClassUtils;
 import com.takin.mvc.util.OnlyOnceCondition;
-import com.takin.mvc.util2.AnnotationUtils;
 
 public class InitHelper {
     private static final Logger logger = LoggerFactory.getLogger(InitHelper.class);
@@ -101,16 +101,16 @@ public class InitHelper {
     private Set<Class<? extends MVCController>> parseControllers(String packagePrefix) {
         logger.info("start load all class");
         Set<Class<?>> classSet = ClassUtils.getClasses(packagePrefix);
-        logger.info("end   load all class");
 
         ImmutableSet.Builder<Class<? extends MVCController>> builder = ImmutableSet.builder();
 
         for (Class<?> clazz : classSet) {
             if (AnnotationUtils.isClassAnnotationed(clazz, Controller.class)) {
-                logger.info("add class:" + clazz.getName());
+                logger.info("add controller class:" + clazz.getName());
                 builder.add((Class<? extends MVCController>) clazz).build();
             }
             if (AnnotationUtils.isClassAnnotationed(clazz, Init.class)) {
+                logger.info("add init class:" + clazz.getName());
                 initers.add((IInit) MVCDI.getInstance(clazz));
             }
         }

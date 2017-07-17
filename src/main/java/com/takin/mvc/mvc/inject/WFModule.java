@@ -12,11 +12,11 @@ import com.google.inject.name.Names;
 import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.InitHelper;
+import com.takin.mvc.mvc.internal.Action;
 import com.takin.mvc.mvc.internal.DefaultBeatContext;
+import com.takin.mvc.mvc.internal.StaticActionAnnotation;
 import com.takin.mvc.mvc.internal.StaticFilesAction;
 import com.takin.mvc.mvc.internal.actionresult.StatusCodeActionResult;
-import com.takin.mvc.mvc.route.Action;
-import com.takin.mvc.mvc.route.StaticActionAnnotation;
 import com.takin.mvc.mvc.server.BaseSessionHandler;
 import com.takin.mvc.mvc.server.SessionHandler;
 

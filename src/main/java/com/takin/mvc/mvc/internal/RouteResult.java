@@ -18,7 +18,7 @@
 *  specific language governing permissions and limitations
 *  under the License.
 */
-package com.takin.mvc.mvc.route;
+package com.takin.mvc.mvc.internal;
 
 import com.takin.mvc.mvc.ActionResult;
 

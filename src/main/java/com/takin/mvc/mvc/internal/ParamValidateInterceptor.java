@@ -4,11 +4,11 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 import com.google.common.collect.Maps;
+import com.takin.emmet.annotation.AnnotationUtils;
 import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.annotation.ParamWithoutValidate;
 import com.takin.mvc.mvc.interceptor.ActionInterceptor;
-import com.takin.mvc.util2.AnnotationUtils;
 
 public class ParamValidateInterceptor implements ActionInterceptor {
 
