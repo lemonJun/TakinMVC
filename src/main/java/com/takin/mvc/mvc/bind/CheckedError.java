@@ -23,11 +23,6 @@ public class CheckedError {
      */
     private String message;
 
-    /**
-     * 错误值
-     */
-    //private Object invalidValue;
-
     public CheckedError(ErrorType errorType, String targetName, String message) {
         super();
         this.errorType = errorType;
@@ -56,15 +51,6 @@ public class CheckedError {
         return errorType;
     }
 
-    /**
-     * @return the invalidValue
-     */
-    //	public Object getInvalidValue() {
-    //		return invalidValue;
-    //	}
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
         return "ValidateError [targetName=" + targetName + ", message=" + message + "]";

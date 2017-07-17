@@ -30,7 +30,6 @@ public class OutputCacheInterceptor implements ActionInterceptor {
                 return new ActionResult() {
                     @Override
                     public void render(BeatContext beat) throws Exception {
-
                         beat.getResponse().setStatus(HttpServletResponse.SC_NOT_MODIFIED);
                     }
 

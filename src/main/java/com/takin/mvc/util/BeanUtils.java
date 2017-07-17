@@ -34,6 +34,9 @@ import com.takin.emmet.util.Assert;
  * @author lemon
  */
 public class BeanUtils {
+    private BeanUtils() {
+
+    }
 
     private static final Logger log = LoggerFactory.getLogger(BeanUtils.class);
 

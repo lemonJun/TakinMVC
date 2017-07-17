@@ -74,7 +74,6 @@ public interface ClientContext {
 
         private CookieHandler cookies = null;
         private String relativeUrl = null;
-        private UploadRequest uploads = null;
         private InetAddress address = null;
 
         @Inject
@@ -90,7 +89,8 @@ public interface ClientContext {
             if (cookies != null)
                 return cookies;
 
-            return cookies = MVCDI.getInstance(com.takin.mvc.mvc.client.CookieHandler.class);
+            cookies = MVCDI.getInstance(com.takin.mvc.mvc.client.CookieHandler.class);
+            return cookies;
             /**             Cookie[] cks = request.getCookies();
             //             cookies = WFGod.instance.getInstance(com.bj58.wf.mvc.client.CookieHandler.class);
             //             
@@ -127,7 +127,7 @@ public interface ClientContext {
         public InetAddress getAddress() {
             if (address != null)
                 return address;
-            
+
             address = gerRemoteAddress();
             if (!reverseProxy.isCluster(address))
                 return address;

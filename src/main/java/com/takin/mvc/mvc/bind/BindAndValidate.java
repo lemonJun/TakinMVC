@@ -14,13 +14,15 @@ import com.takin.mvc.util.BeanUtils;
  */
 public class BindAndValidate {
 
+    private BindAndValidate() {
+
+    }
+
     public static ObjectBindResult bindAndValidate(Class<?> clazz) {
 
         BeatContext beat = MVCDI.getInstance(Dispatcher.class).currentBeatContext();
 
         ObjectBindResult obr = bind(clazz, beat);
-
-        //		validate(obr.getTarget());
 
         beat.getBindResults().add(obr);
 
@@ -51,27 +53,5 @@ public class BindAndValidate {
         return bind(target, beat);
 
     }
-
-    // private static Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
-
-    //	/**
-    //	 * 校验一个目标对象
-    //	 * @param <T>
-    //	 * @param target
-    //	 * @return
-    //	 */
-    //	public static <T> ObjectBindResult validate(T target){;
-    //		//javax.validation.ValidatorFactory.
-    //		
-    //		Set<ConstraintViolation<T>> constraintViolations = validator.validate(target);
-    //		List<CheckedError> errors = new ArrayList<CheckedError>();
-    //		for(ConstraintViolation<T> constraintViolation : constraintViolations) {
-    //			CheckedError error = new CheckedError(CheckedError.ErrorType.VALIDATE,
-    //					constraintViolation.getPropertyPath().toString(), 
-    //					constraintViolation.getMessage());
-    //			errors.add(error);
-    //		}	
-    //		return new ObjectBindResult(target, errors);
-    //	}
 
 }

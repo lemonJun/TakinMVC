@@ -20,7 +20,6 @@
 */
 package com.takin.mvc.mvc.internal;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.inject.Inject;
@@ -38,7 +37,6 @@ import org.slf4j.LoggerFactory;
 
 import com.takin.mvc.mvc.ActionResult;
 import com.takin.mvc.mvc.BeatContext;
-import com.takin.mvc.mvc.InitHelper;
 import com.takin.mvc.mvc.cache.PageCache;
 import com.takin.mvc.mvc.exception.WFException;
 import com.takin.mvc.mvc.view.ViewFactory;
@@ -101,7 +99,7 @@ public class VelocityViewFactory implements ViewFactory {
             Template template = Velocity.getTemplate(path);
             HttpServletResponse response;
             if (beat.getModel().get("needcache") != null && beat.getModel().get("__TRACEINFO") == null)
-                
+
                 // check me 这样处理缓存是否合理。            
                 response = PageCache.cacheResponseWrapper();
             else
@@ -131,8 +129,4 @@ public class VelocityViewFactory implements ViewFactory {
         }
     }
 
-    private String viewFolderPath() {
-        File parent = InitHelper.instance.currentFolder();
-        return new File(parent, "views").getAbsolutePath();
-    }
 }

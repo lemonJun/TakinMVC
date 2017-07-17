@@ -15,7 +15,7 @@ public class BeatBindResults {
     /**
      * 绑定结果列表
      */
-    private List<ObjectBindResult> results = new ArrayList<ObjectBindResult>();
+    private List<ObjectBindResult> results = new ArrayList<>();
 
     /**
      * 根据目标对象获得绑定信息
@@ -49,7 +49,7 @@ public class BeatBindResults {
      * @return
      */
     public List<ObjectBindResult> getErrorBindResults() {
-        List<ObjectBindResult> errorResults = new ArrayList<ObjectBindResult>();
+        List<ObjectBindResult> errorResults = new ArrayList<>();
 
         for (ObjectBindResult result : results)
             if (result.getErrorCount() > 0)
@@ -71,7 +71,7 @@ public class BeatBindResults {
      * @return
      */
     public CheckedError[] getErrors() {
-        List<CheckedError> errors = new ArrayList<CheckedError>();
+        List<CheckedError> errors = new ArrayList<>();
         for (ObjectBindResult br : getErrorBindResults()) {
             for (CheckedError e : br.getErrors())
                 errors.add(e);

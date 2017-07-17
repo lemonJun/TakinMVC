@@ -244,7 +244,7 @@ public class AntPathMatcher implements PathMatcher {
     }
 
     public Map<String, String> extractUriTemplateVariables(String pattern, String path) {
-        Map<String, String> variables = new LinkedHashMap<String, String>();
+        Map<String, String> variables = new LinkedHashMap<>();
         boolean result = doMatch(pattern, path, true, variables);
         Assert.state(result, "Pattern \"" + pattern + "\" is not a match for \"" + path + "\"");
         return variables;
@@ -399,11 +399,12 @@ public class AntPathMatcher implements PathMatcher {
             return 0;
         }
 
-        private int getWildCardCount(String pattern) {
+        private int getWildCardCount(final String pattern) {
+            String npattern = "";
             if (pattern.endsWith(".*")) {
-                pattern = pattern.substring(0, pattern.length() - 2);
+                npattern = pattern.substring(0, pattern.length() - 2);
             }
-            return StringUtils.countOccurrencesOf(pattern, "*");
+            return StringUtils.countOccurrencesOf(npattern, "*");
         }
 
         /**

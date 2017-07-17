@@ -216,7 +216,8 @@ public class ActionInfo implements ActionAttribute {
      */
     ActionResult invoke(BeatContext beat, Map<String, String> urlParams) {
         Object[] param = new Object[paramTypes.size()];
-        for (int i = 0; i < paramNames.size(); i++) {
+        int size = paramNames.size();
+        for (int i = 0; i < size; i++) {
             String paramName = paramNames.get(i);
             Class<?> clazz = paramTypes.get(i);
 
@@ -251,7 +252,6 @@ public class ActionInfo implements ActionAttribute {
 
     String simplyPathPattern(String typePath, String methodPath) {
         String originPathPattern = combinePathPattern(typePath, methodPath);
-        logger.info(String.format("originPath:%s", originPathPattern));
         return simplyPathPattern(originPathPattern);
     }
 
@@ -288,7 +288,6 @@ public class ActionInfo implements ActionAttribute {
     }
 
     private String combinePathPattern(String typePath, String methodPath) {
-        logger.info(String.format("%s-%s", typePath, methodPath));
         return getPathMatcher().combine(typePath, methodPath);
     }
 
