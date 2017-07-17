@@ -18,7 +18,7 @@
 *  specific language governing permissions and limitations
 *  under the License.
 */
-package com.takin.mvc.util2;
+package com.takin.mvc.util;
 
 import java.util.List;
 import java.util.Map;

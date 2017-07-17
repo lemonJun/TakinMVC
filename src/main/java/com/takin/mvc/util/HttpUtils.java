@@ -1,3 +1,4 @@
+package com.takin.mvc.util;
 ///*
 //*  Copyright Beijing 58 Information Technology Co.,Ltd.
 //*

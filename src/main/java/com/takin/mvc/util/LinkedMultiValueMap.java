@@ -18,7 +18,7 @@
 *  specific language governing permissions and limitations
 *  under the License.
 */
-package com.takin.mvc.util2;
+package com.takin.mvc.util;
 
 import java.io.Serializable;
 import java.util.Collection;

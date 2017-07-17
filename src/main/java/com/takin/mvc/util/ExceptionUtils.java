@@ -2,7 +2,7 @@ package com.takin.mvc.util;
 
 import java.lang.reflect.InvocationTargetException;
 
-import com.takin.mvc.util2.Assert;
+import com.takin.emmet.util.Assert;
 
 /**
  * @Description：ExceptionUtils，

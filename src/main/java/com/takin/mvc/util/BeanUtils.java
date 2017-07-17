@@ -18,7 +18,7 @@
 *  specific language governing permissions and limitations
 *  under the License.
 */
-package com.takin.mvc.util2;
+package com.takin.mvc.util;
 
 import java.lang.reflect.Constructor;
 
@@ -26,6 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.takin.emmet.reflect.ReflectionUtils;
+import com.takin.emmet.util.Assert;
 
 /**
  * Bean工具类

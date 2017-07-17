@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.takin.mvc.util2;
+package com.takin.mvc.util;
 
 import java.io.Externalizable;
 import java.io.Serializable;
@@ -23,6 +23,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+
+import com.takin.emmet.util.Assert;
+import com.takin.emmet.util.ClassUtils;
 
 /**
  * Provides methods to support various naming and other conventions used

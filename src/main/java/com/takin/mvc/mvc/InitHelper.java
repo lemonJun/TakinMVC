@@ -16,13 +16,13 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.inject.Module;
 import com.takin.emmet.annotation.AnnotationUtils;
+import com.takin.emmet.util.ClassUtils;
 import com.takin.mvc.mvc.annotation.Controller;
 import com.takin.mvc.mvc.annotation.Init;
 import com.takin.mvc.mvc.exception.WFException;
 import com.takin.mvc.mvc.inject.MVCDI;
 import com.takin.mvc.mvc.inject.UserModule;
 import com.takin.mvc.mvc.inject.WFModule;
-import com.takin.mvc.util.ClassUtils;
 import com.takin.mvc.util.OnlyOnceCondition;
 
 public class InitHelper {

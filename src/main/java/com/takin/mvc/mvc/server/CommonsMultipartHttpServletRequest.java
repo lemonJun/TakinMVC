@@ -32,8 +32,8 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
-import com.takin.mvc.util2.LinkedMultiValueMap;
-import com.takin.mvc.util2.MultiValueMap;
+import com.takin.mvc.util.LinkedMultiValueMap;
+import com.takin.mvc.util.MultiValueMap;
 
 /**
  * 用于做文件上传时的参数处理

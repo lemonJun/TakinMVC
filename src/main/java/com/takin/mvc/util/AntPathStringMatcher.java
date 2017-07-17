@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.takin.mvc.util2;
+package com.takin.mvc.util;
 
 import java.util.LinkedList;
 import java.util.List;

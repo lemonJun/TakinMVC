@@ -20,8 +20,8 @@
 */
 package com.takin.mvc.mvc.internal;
 
+import com.takin.emmet.file.PathUtils;
 import com.takin.mvc.mvc.BeatContext;
-import com.takin.mvc.util.PathUtils;
 
 /**
  * @author lemon

@@ -1,5 +1,5 @@
 
-package com.takin.mvc.util2;
+package com.takin.mvc.util;
 
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.takin.emmet.string.StringUtils;
+import com.takin.emmet.util.Assert;
 
 /**
  * PathMatcher implementation for Ant-style path patterns. Examples are provided below.

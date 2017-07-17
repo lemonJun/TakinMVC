@@ -3,7 +3,7 @@ package com.takin.mvc.mvc.bind;
 import com.takin.mvc.mvc.BeatContext;
 import com.takin.mvc.mvc.Dispatcher;
 import com.takin.mvc.mvc.inject.MVCDI;
-import com.takin.mvc.util2.BeanUtils;
+import com.takin.mvc.util.BeanUtils;
 
 /**
  * 用于初始化绑定和校验工具并且完成绑定操作。
