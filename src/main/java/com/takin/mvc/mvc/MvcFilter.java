@@ -38,10 +38,10 @@ public class MvcFilter implements Filter {
         try {
             Env.init();
             PropertyConfigurator.configure(Env.getNamespaceConfigFolder() + File.separator + "log4j.properties");
-            
+
             //初始化分发器    核心初始化类
             InitHelper.instance.init(servletContext);
-            
+
             //读自已的初始化
             MVCDI.getInstance(Dispatcher.class).init();
             logger.info("mvcfilter init succ.");

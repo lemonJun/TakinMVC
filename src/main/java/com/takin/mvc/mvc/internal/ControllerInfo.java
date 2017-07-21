@@ -109,9 +109,7 @@ public class ControllerInfo {
                     pathInfo.setMethodAnn(pathAnnotation);
                     pathInfo.setMethodPath(methodpaths[j]);
                     pathInfo.setMethodOrder(order);
-                    logger.info(JSON.toJSONString(pathInfo));
                     ActionInfo actionInfo = new ActionInfo(this, method, InitHelper.instance, pathInfo);
-                    logger.info(JSON.toJSONString(actionInfo));
                     actions.add(actionInfo);
                 }
             }

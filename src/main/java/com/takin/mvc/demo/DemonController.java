@@ -18,7 +18,7 @@ public class DemonController extends BaseController {
         long start = System.currentTimeMillis();
         logger.info("start=" + start);
         logger.info(System.currentTimeMillis() - start + "");
-
+        
         return ActionResult.view("index");
     }
 

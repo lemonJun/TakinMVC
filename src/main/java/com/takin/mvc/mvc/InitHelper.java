@@ -100,7 +100,7 @@ public class InitHelper {
     @SuppressWarnings("unchecked")
     private Set<Class<? extends MVCController>> parseControllers(String packagePrefix) {
         logger.info("start load all class");
-        Set<Class<?>> classSet = ClassUtils.getClasses(packagePrefix);
+        Set<Class<?>> classSet = ScanClass.getClasses(packagePrefix);
 
         ImmutableSet.Builder<Class<? extends MVCController>> builder = ImmutableSet.builder();
 

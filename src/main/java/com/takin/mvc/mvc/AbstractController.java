@@ -22,7 +22,7 @@ public abstract class AbstractController implements MVCController {
     protected BeatContext beat = new BeatContextBean();
 
     @Inject
-    protected InitHelper wfGod;
+    protected InitHelper initHelper;
 
     @Inject
     protected ViewFactory view;

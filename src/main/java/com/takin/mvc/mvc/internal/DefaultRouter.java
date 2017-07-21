@@ -129,7 +129,6 @@ public class DefaultRouter implements Router {
         //对不包含?*{的path此处再增加一个ulr到action的映射 
         if (!newAction.path().contains("*") && !newAction.path().contains("?") && !newAction.path().contains("{")) {
             urlAction.put(newAction.path(), newAction);
-            logger.info(newAction.path() + " into map");
         }
     }
 
